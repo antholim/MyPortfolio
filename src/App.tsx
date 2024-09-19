@@ -3,6 +3,7 @@ import './App.css'
 import Header from './components/Header.tsx'
 import AboutMe from './components/AboutMe.tsx'
 import Projects from './components/Projects.tsx'
+import ContactMe from './components/ContactMe.tsx'
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
       <Header/>
       <AboutMe/>
       <Projects/>
+      <ContactMe/>
     </>
   )
 }

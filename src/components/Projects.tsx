@@ -1,4 +1,4 @@
-import {Project, PROJECTS_ENGLISH} from "../data/projects.js"
+import {Project, PROJECTS_ENGLISH} from "../data/projects.ts"
 
 function Projects() {
     return(
