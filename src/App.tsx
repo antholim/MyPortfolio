@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import './App.css'
-import Header from './components/header.tsx'
+import Header from './components/Header.tsx'
 import AboutMe from './components/AboutMe.tsx'
+import Projects from './components/Projects.tsx'
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
     <>
       <Header/>
       <AboutMe/>
+      <Projects/>
     </>
   )
 }
