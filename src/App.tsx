@@ -4,6 +4,7 @@ import Header from './components/Header.tsx'
 import AboutMe from './components/AboutMe.tsx'
 import Projects from './components/Projects.tsx'
 import ContactMe from './components/ContactMe.tsx'
+import Skills from './components/Skills.tsx'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <Header/>
       <AboutMe/>
       <Projects/>
+      <Skills/>
       <ContactMe/>
     </>
   )
