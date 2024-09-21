@@ -6,12 +6,18 @@ import Projects from './components/Projects.tsx'
 import ContactMe from './components/ContactMe.tsx'
 import Skills from './components/Skills.tsx'
 
-function App() {
+enum Languages {
+  English = 'English',
+  French = 'French',
+  Spanish = 'Spanish',
+}
 
+function App() {
+  const [language, setLanguage] = useState<Languages | "">(Languages.English);
   return (
     <>
-      <Header/>
-      <AboutMe/>
+      <Header language={language} setLanguage={setLanguage}/>
+      <AboutMe language={language}/>
       <Projects/>
       <Skills/>
       <ContactMe/>
