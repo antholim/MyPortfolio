@@ -11,7 +11,7 @@ export const DESCRIPTION:string[] = [
 
      `Hola a todos ! Me llamo Anthony Lim, soy un estudiante de ingeniería de software en la Universidad de Concordia en Montreal.
      Anteriormente, obtuve un diploma en ciencias de la computación y matemáticas en el Collège Bois-De-Boulogne. 
-     Ahora mismo, profundizo mis conocimientos en el desarrollo web y la creación de aplicaciones innovadoras que resolven desafíos del mundo real.
+     Ahora mismo, profundizo mis conocimientos en el desarrollo web y la creación de aplicaciones innovadoras que resuelvan desafíos del mundo real.
      En este sitio web, encontrarás proyectos que he realizado a lo largo de mi carrera como desarrollador. Aunque mi lengua materna no es el español, me encanta muchisimo 
      aprender nuevos idiomas y por eso, he decidido traducir mi sitio web en español. Si encuentras errores en la traducción, no dudes en contactarme por email para que pueda corregirlos.`
 ]

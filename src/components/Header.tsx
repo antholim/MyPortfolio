@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from "../styles/Header.module.css";
 
 enum Languages {
   English = 'English',
@@ -15,16 +16,10 @@ function Header({ language, setLanguage }) {
   };
   function handleDownload() {
     const pdfUrl = "/Lim_Anthony_40281180_CV.pdf"; // Make sure the path is correct
-    // Create an invisible anchor element and trigger the download
-    const link = document.createElement('a');
-    link.href = pdfUrl;
-    link.setAttribute('download', 'Lim_Anthony_40281180_CV.pdf.pdf'); // Set the name for the downloaded file
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    window.open(pdfUrl, '_blank');
   }
   return (
-    <header>
+    <header className={styles.header}>
       <span>Anthony Lim</span>
       <button>About</button>
       <button>Projects</button>
@@ -38,7 +33,6 @@ function Header({ language, setLanguage }) {
           </option>
         ))}
       </select>
-      {language && <>{language}</>}
     </header>
   );
 } export default Header;
