@@ -1,0 +1,36 @@
+.contactForm {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.contactForm h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contactForm p {
+    font-size: 18px;
+    color: #666;
+    margin: 10px 0;
+}
+
+.contactForm a {
+    color: #0070f3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contactForm a:hover {
+    color: #005bb5;
+    text-decoration: underline;
+}
+
+footer {
+    margin-top: 40px;
+    font-size: 14px;
+    color: #888;
+}

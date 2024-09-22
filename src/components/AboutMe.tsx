@@ -1,5 +1,6 @@
 import React from 'react';
 import { DESCRIPTION } from "../data/aboutme.ts"
+import styles from "../styles/aboutMe.module.css";
 
 function AboutMe({language}) {
     let description = DESCRIPTION[0];
@@ -12,11 +13,12 @@ function AboutMe({language}) {
     }
         
     return (
-        <div>
-        <h1>About Me</h1>
-        <p>
+        <section className={styles.aboutContainer} id="about">
+        <img src="/IMG_3527.png" alt="Profile" className={styles.profileImage} />
+        <h1 className={styles.name}>Anthony Lim</h1>
+        <p className={styles.description}>
             {description}
         </p>
-        </div>
+      </section>
     );
 } export default AboutMe;

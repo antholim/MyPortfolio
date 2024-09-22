@@ -1,0 +1,19 @@
+.skillsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 80px 0;
+}
+
+.skillCard {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.skillTitle {
+    font-size: 20px;
+    color: #333;
+}

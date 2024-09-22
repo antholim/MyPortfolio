@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from "../styles/Header.module.css";
+import styles from "../styles/header.module.css";
 
 enum Languages {
   English = 'English',
@@ -21,10 +21,13 @@ function Header({ language, setLanguage }) {
   return (
     <header className={styles.header}>
       <span>Anthony Lim</span>
-      <button>About</button>
-      <button>Projects</button>
-      <button>Experience</button>
-      <button>Contact</button>
+      <div className={styles.logo}>MyPortfolio</div>
+      <nav className={styles.navLinks}>
+        <a href="#projects" className={styles.navItem}>Projects</a>
+        <a href="#about" className={styles.navItem}>About</a>
+        <a href="#skills" className={styles.navItem}>Skills</a>
+        <a href="#contact" className={styles.navItem}>Contact</a>
+      </nav>
       <button onClick={handleDownload}>Download CV</button>
       <select name="select-language" id="select-language" onChange={handleSelectLanguage}>
         {Object.values(Languages).map((language, index) => (
