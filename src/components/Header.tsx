@@ -20,22 +20,21 @@ function Header({ language, setLanguage }) {
   }
   return (
     <header className={styles.header}>
-      <span>Anthony Lim</span>
-      <div className={styles.logo}>MyPortfolio</div>
+      <div className={styles.logo}>Anthony Lim</div>
       <nav className={styles.navLinks}>
-        <a href="#projects" className={styles.navItem}>Projects</a>
         <a href="#about" className={styles.navItem}>About</a>
+        <a href="#projects" className={styles.navItem}>Projects</a>
         <a href="#skills" className={styles.navItem}>Skills</a>
         <a href="#contact" className={styles.navItem}>Contact</a>
+        <a className={styles.navItem} onClick={handleDownload}>Download CV</a>
+        <select className={styles.language} name="select-language" id="select-language" onChange={handleSelectLanguage}>
+          {Object.values(Languages).map((language, index) => (
+            <option key={index} value={language}>
+              {language}
+            </option>
+          ))}
+        </select>
       </nav>
-      <button onClick={handleDownload}>Download CV</button>
-      <select name="select-language" id="select-language" onChange={handleSelectLanguage}>
-        {Object.values(Languages).map((language, index) => (
-          <option key={index} value={language}>
-            {language}
-          </option>
-        ))}
-      </select>
     </header>
   );
 } export default Header;
