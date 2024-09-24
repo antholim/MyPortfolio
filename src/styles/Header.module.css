@@ -19,6 +19,7 @@
 .navLinks {
   display: flex;
   gap: 20px;
+  padding-right: 5%;
 }
 
 .navItem {
@@ -30,4 +31,10 @@
 .navItem:hover {
   color: #0070f3;
   transition: color 0.3s ease;
+}
+
+.language {
+  font-size: 18px;
+  color: #333;
+  text-decoration: none;
 }
