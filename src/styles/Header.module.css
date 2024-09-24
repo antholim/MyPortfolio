@@ -18,6 +18,7 @@
 
 .navLinks {
   display: flex;
+  align-items: center; /* Aligns items vertically in the middle */
   gap: 20px;
   padding-right: 5%;
 }
@@ -26,6 +27,8 @@
   font-size: 18px;
   color: #333;
   text-decoration: none;
+  display: flex;
+  align-items: center; /* Ensures vertical alignment */
 }
 
 .navItem:hover {
@@ -37,4 +40,17 @@
   font-size: 18px;
   color: #333;
   text-decoration: none;
+  padding: 5px; /* Optional padding for select box */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+select {
+  /* Reset */
+  appearance: none;
+  border: 0;
+  font: inherit;
+  /* Personalize */
+  color: white;
+  cursor: pointer;
 }
