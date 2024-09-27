@@ -15,7 +15,7 @@ function AboutMe({language}) {
     return (
         <section className={styles.aboutContainer} id="about">
         <img src="/IMG_3527.png" alt="Profile" className={styles.profileImage} />
-        <h1 className={styles.name}>Anthony Lim</h1>
+        <h2 className={styles.name}>Anthony Lim</h2>
         <p className={styles.description}>
             {description}
         </p>

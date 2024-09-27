@@ -1,19 +1,31 @@
 .skillsGrid {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 20px;
-    padding: 80px 0;
-}
 
+}
+.skillsGrid h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+}
 .skillCard {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     text-align: center;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    width: 150px;
+    height: 15px;
+    max-width: 6rem;
+    max-height: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.skillCard:hover {
+    transform: translateY(-10px);
 }
 
 .skillTitle {
     font-size: 20px;
     color: #333;
+    display: inline-flex;
+    align-items: center; /* Vertically aligns the icon and name */
 }

@@ -10,17 +10,15 @@ function Skills() {
             {LANGUAGES.map((language : Tool) => {
                 return (
                     <div className={styles.skillCard}>
-                        {language.icon}
-                        <h2 className={styles.skillTitle}>{language.name}</h2>
+                        <span className={styles.skillTitle}>{language.icon} {language.name}</span>
                     </div>
                 )
             })}
-            <h2>Frameworks</h2>
+            <h2>Frameworks / Libraries</h2>
             {FRAMEWORKS.map((framework : Tool) => {
                 return (
                     <div className={styles.skillCard}>
-                        {framework.icon}
-                        <h2 className={styles.skillTitle}>{framework.name}</h2>
+                        <span className={styles.skillTitle}>{framework.icon} {framework.name}</span>
                     </div>
                 )
             })}
@@ -28,8 +26,7 @@ function Skills() {
             {DATABASES.map((database : Tool) => {
                 return (
                     <div className={styles.skillCard}>
-                        {database.icon}
-                        <h2 className={styles.skillTitle}>{database.name}</h2>
+                        <span className={styles.skillTitle}>{database.icon} {database.name}</span>
                     </div>
                 )
             })}
@@ -37,8 +34,7 @@ function Skills() {
             {DEVOPS_TOOLS.map((devops : Tool) => {
                 return (
                     <div className={styles.skillCard}>
-                        {devops.icon}
-                        <h2 className={styles.skillTitle}>{devops.name}</h2>
+                        <span className={styles.skillTitle}>{devops.icon} {devops.name}</span>
                     </div>
                 )
             })}
@@ -46,8 +42,7 @@ function Skills() {
             {TESTING_TOOLS.map((testing : Tool) => {
                 return (
                     <div className={styles.skillCard}>
-                        {testing.icon}
-                        <h2 className={styles.skillTitle}>{testing.name}</h2>
+                        <span className={styles.skillTitle}>{testing.icon} {testing.name}</span>
                     </div>
                 )
             })}
