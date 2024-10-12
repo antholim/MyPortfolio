@@ -13,7 +13,7 @@ function Projects() {
                         <h2 className={styles.projectTitle}>{project.title}</h2>
                         <p className={styles.projectDescription}>{project.description}</p>
                         <p>{project.technologies}</p>
-                        <a href={project.link}>{project.link}</a>
+                        <a href={project.link}>Github link</a>
                     </li>
                 )
             })}
