@@ -1,9 +1,10 @@
 import { Tool, LANGUAGES, FRAMEWORKS, DATABASES, DEVOPS_TOOLS, TESTING_TOOLS } from "../data/programming.tsx"
 import { FaJava } from "react-icons/fa";
 import styles from "../styles/skills.module.css";
+import {LanguageProps} from "../types/props.ts";
 
 
-function Skills() {
+function Skills({language}:LanguageProps):JSX.Element {
     return (
         <section className={styles.skillsGrid} id="skills">
             <section>
