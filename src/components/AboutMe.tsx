@@ -1,8 +1,10 @@
 import React from 'react';
 import { DESCRIPTION } from "../data/aboutme.ts"
 import styles from "../styles/aboutMe.module.css";
+import {LanguageProps} from "../types/props.ts";
 
-function AboutMe({language}) {
+
+function AboutMe({language}:LanguageProps) : JSX.Element {
     let description = DESCRIPTION[0];
     if (language === "English") {
         description = DESCRIPTION[0];

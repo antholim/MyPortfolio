@@ -1,6 +1,8 @@
 import styles from '../styles/contactme.module.css';
+import {LanguageProps} from "../types/props.ts";
 
-function ContactMe() {
+
+function ContactMe({language}: LanguageProps) : JSX.Element {
     return (
         <section className={styles.contactForm} id="contact">
             <div>

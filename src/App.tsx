@@ -18,9 +18,9 @@ function App() {
     <>
       <Header language={language} setLanguage={setLanguage}/>
       <AboutMe language={language}/>
-      <Projects/>
-      <Skills/>
-      <ContactMe/>
+      <Projects language={language}/>
+      <Skills language={language}/>
+      <ContactMe language = {language}/>
     </>
   )
 }

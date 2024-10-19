@@ -1,8 +1,9 @@
 import { Project, PROJECTS_ENGLISH } from "../data/projects.ts"
 import styles from '../styles/projects.module.css';
+import {LanguageProps} from "../types/props.ts";
 
 
-function Projects() {
+function Projects({language}: LanguageProps) : JSX.Element {
     return (
         <section className={styles.projectsGrid} id="projects">
         <h2>Projects</h2>
