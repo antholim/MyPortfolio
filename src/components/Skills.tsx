@@ -19,7 +19,7 @@ function Skills() {
                 </ul>
             </section>
             <section>
-                <h2>Frameworks / Libraries</h2>
+                <h2>Frameworks & Libraries</h2>
                 <ul className={styles.skills}>
                     {FRAMEWORKS.map((framework: Tool) => {
                         return (
