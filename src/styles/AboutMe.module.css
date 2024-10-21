@@ -13,10 +13,10 @@
   margin-bottom: 20px;
 }
 .profileImage {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  margin-bottom: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Ensures the image fits within the circle */
 }
 
 .name {
