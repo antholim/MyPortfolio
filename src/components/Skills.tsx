@@ -5,16 +5,25 @@ import {
   DATABASES,
   DEVOPS_TOOLS,
   TESTING_TOOLS,
+  KEY_WORDS,
 } from "../data/programming.tsx";
 import { FaJava } from "react-icons/fa";
 import styles from "../styles/skills.module.css";
 import { LanguageProps } from "../types/props.ts";
 
 function Skills({ language }: LanguageProps): JSX.Element {
+  let keyWords = KEY_WORDS.english;
+  if (language === "English") {
+    keyWords = KEY_WORDS.english;
+  } else if (language === "French") {
+    keyWords = KEY_WORDS.french;
+  } else if (language === "Spanish") {
+    keyWords = KEY_WORDS.spanish;
+  }
   return (
     <section className={styles.skillsGrid} id="skills">
       <section>
-        <h2>Languages</h2>
+        <h2>{keyWords.language}</h2>
         <ul className={styles.skills}>
           {LANGUAGES.map((language: Tool) => {
             return (
@@ -28,7 +37,7 @@ function Skills({ language }: LanguageProps): JSX.Element {
         </ul>
       </section>
       <section>
-        <h2>Frameworks & Libraries</h2>
+        <h2>{keyWords.framework}</h2>
         <ul className={styles.skills}>
           {FRAMEWORKS.map((framework: Tool) => {
             return (
@@ -50,7 +59,7 @@ function Skills({ language }: LanguageProps): JSX.Element {
                 )
             })} */}
       <section>
-        <h2>Databases</h2>
+        <h2>{keyWords.database}</h2>
         <ul className={styles.skills}>
           {DATABASES.map((database: Tool) => {
             return (
@@ -64,7 +73,7 @@ function Skills({ language }: LanguageProps): JSX.Element {
         </ul>
       </section>
       <section>
-        <h2>Version Control</h2>
+        <h2>{keyWords.versionControl}</h2>
         <ul className={styles.skills}>
           {DEVOPS_TOOLS.map((devops: Tool) => {
             return (
@@ -78,7 +87,7 @@ function Skills({ language }: LanguageProps): JSX.Element {
         </ul>
       </section>
       <section>
-        <h2>Testing Tools</h2>
+        <h2>{keyWords.testing}</h2>
         <ul className={styles.skills}>
           {TESTING_TOOLS.map((testing: Tool) => {
             return (

@@ -11,7 +11,7 @@ function Experience({ language }: LanguageProps): JSX.Element {
     experience = "Experiencia";
   }
   return (
-    <section className={styles.projectsGrid} id="projects">
+    <section className={styles.projectsGrid} id="experience">
       <h2>{experience}</h2>
     </section>
   );

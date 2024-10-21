@@ -16,7 +16,9 @@ function Header({ language, setLanguage }: LanguageProps): JSX.Element {
   const handleSelectLanguage = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setLanguage(event.target.value as Languages);
+    if (setLanguage) {
+      setLanguage(event.target.value as Languages);
+    }
   };
   function handleDownload() {
     const pdfUrl = "/Lim_Anthony_40281180_CV.pdf"; // Make sure the path is correct
@@ -43,17 +45,20 @@ function Header({ language, setLanguage }: LanguageProps): JSX.Element {
         <a href="#about" className={styles.navItem}>
           {navBarLink[0]}
         </a>
-        <a href="#projects" className={styles.navItem}>
+        <a href="#experience" className={styles.navItem}>
           {navBarLink[1]}
         </a>
-        <a href="#skills" className={styles.navItem}>
+        <a href="#projects" className={styles.navItem}>
           {navBarLink[2]}
         </a>
-        <a href="#contact" className={styles.navItem}>
+        <a href="#skills" className={styles.navItem}>
           {navBarLink[3]}
         </a>
-        <a className={styles.navItem} onClick={handleDownload}>
+        <a href="#contact" className={styles.navItem}>
           {navBarLink[4]}
+        </a>
+        <a className={styles.navItem} onClick={handleDownload}>
+          {navBarLink[5]}
         </a>
         <select
           className={styles.language}

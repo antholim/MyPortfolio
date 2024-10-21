@@ -63,3 +63,27 @@ export const TESTING_TOOLS: Tool[] = [
   { name: "Playwright", icon: <SiPlaywright /> },
   { name: "Puppeteer", icon: <SiPuppeteer /> },
 ];
+
+export const KEY_WORDS = {
+  english: {
+    language: "Languages",
+    framework: "Frameworks & Libraries",
+    database: "Databases",
+    versionControl: "Version Control",
+    testing: "Testing Tools",
+  },
+  french: {
+    language: "Langues",
+    framework: "Framework et librairies",
+    database: "Bases de données",
+    versionControl: "Gestion de version",
+    testing: "Outils de test",
+  },
+  spanish: {
+    language: "Lenguajes",
+    framework: "Marcos y bibliotecas",
+    database: "Bases de datos",
+    versionControl: "Control de versiones",
+    testing: "Herramientas de Testing",
+  },
+};
