@@ -48,5 +48,5 @@
   margin: 20px 0;
 }
 .content:hover {
-transform: translateY(-10px);
+  transform: translateY(-10px);
 }

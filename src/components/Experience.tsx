@@ -30,7 +30,8 @@ function Experience({ language }: LanguageProps): JSX.Element {
               })}
             </ul>
           </div>
-      )})}
+        );
+      })}
     </section>
   );
 }
