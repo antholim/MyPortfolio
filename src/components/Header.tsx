@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "../styles/header.module.css";
 import { LanguageProps } from "../types/props.ts";
 import {

@@ -7,7 +7,6 @@ import {
   TESTING_TOOLS,
   KEY_WORDS,
 } from "../data/programming.tsx";
-import { FaJava } from "react-icons/fa";
 import styles from "../styles/skills.module.css";
 import { LanguageProps } from "../types/props.ts";
 
