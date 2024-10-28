@@ -1,4 +1,3 @@
-import React from "react";
 import { DESCRIPTION } from "../data/aboutme.tsx";
 import styles from "../styles/aboutMe.module.css";
 import { LanguageProps } from "../types/props.ts";
