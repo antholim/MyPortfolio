@@ -1,5 +1,5 @@
 import { DESCRIPTION } from "../data/aboutme.tsx";
-import styles from "../styles/aboutMe.module.css";
+import styles from "../styles/aboutme.module.css";
 import { LanguageProps } from "../types/props.ts";
 
 function AboutMe({ language }: LanguageProps): JSX.Element {
