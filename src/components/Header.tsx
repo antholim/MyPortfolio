@@ -38,20 +38,20 @@ function Header({ language, setLanguage }: LanguageProps): JSX.Element {
   // Scroll effect to hide/show header
   useEffect(() => {
     let lastScrollTop = 0;
-    const header = document.querySelector(`.${styles.header}`);
-
+    const header = document.querySelector(`.${styles.header}`) as HTMLElement; // Type assertion
+  
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       if (scrollTop > lastScrollTop) {
         // Scrolling down, hide header
-        header && (header.style.top = "-100px");
+        header.style.top = "-100px";
       } else {
         // Scrolling up, show header
-        header && (header.style.top = "0");
+        header.style.top = "0";
       }
       lastScrollTop = scrollTop;
     };
-
+  
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
