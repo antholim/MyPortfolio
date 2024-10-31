@@ -10,7 +10,7 @@ export const experiences: Record<
       company: "X2O Media",
       date: "Fall 2024",
       bulletPoints: [
-        "Achieved an 80% reduction in the quality assurance process duration by developing end-to-end (E2E) tests using Playwright and TypeScript.",
+        "Achieved an 80% reduction of time in the quality assurance process duration by developing end-to-end (E2E) tests using Playwright and TypeScript.",
         "Developed a bot that fetches release notes with updated dependencies to facilitate tracking software changes.",
       ],
     },
