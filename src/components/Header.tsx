@@ -12,7 +12,7 @@ enum Languages {
   French = "French",
   Spanish = "Spanish",
 }
-const href:string[] = ["about", "experience", "projects", "skills", "contact", "download"];
+const href: string[] = ["about", "experience", "projects", "skills", "contact", "download"];
 
 function Header({ language, setLanguage }: LanguageProps): JSX.Element {
   const handleSelectLanguage = (
@@ -32,14 +32,14 @@ function Header({ language, setLanguage }: LanguageProps): JSX.Element {
     language === "English"
       ? navBarLinkEnglish
       : language === "French"
-      ? navBarLinkFrench
-      : navBarLinkSpanish;
+        ? navBarLinkFrench
+        : navBarLinkSpanish;
 
   // Scroll effect to hide/show header
   useEffect(() => {
     let lastScrollTop = 0;
     const header = document.querySelector(`.${styles.header}`) as HTMLElement; // Type assertion
-  
+
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       if (scrollTop > lastScrollTop) {
@@ -51,7 +51,7 @@ function Header({ language, setLanguage }: LanguageProps): JSX.Element {
       }
       lastScrollTop = scrollTop;
     };
-  
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -61,13 +61,12 @@ function Header({ language, setLanguage }: LanguageProps): JSX.Element {
       <div className={styles.logo}>Anthony Lim</div>
       <nav className={styles.navLinks}>
         {navBarLink.map((link, index) => (
-          <a key={index} href={`#${href[index]}`} className={styles.navItem}>
+          href[index] !== "download" ? <a key={index} href={`#${href[index]}`} className={styles.navItem}>
             {link}
+          </a> : <a className={styles.navItem} onClick={handleDownload}>
+            {navBarLink[5]}
           </a>
         ))}
-        <a className={styles.navItem} onClick={handleDownload}>
-          {navBarLink[5]}
-        </a>
         <select
           className={styles.language}
           name="select-language"
