@@ -1,6 +1,7 @@
 import { Project, PROJECTS } from "../data/projects.tsx";
 import styles from "../styles/projects.module.css";
 import { LanguageProps } from "../types/props.ts";
+import { AiFillGithub, AiFillYoutube } from "react-icons/ai";
 
 function Projects({ language }: LanguageProps): JSX.Element {
   let project: string = "Projects";
@@ -19,7 +20,7 @@ function Projects({ language }: LanguageProps): JSX.Element {
           return (
             <li key={index} className={styles.projectCard}>
               <h2 className={styles.projectTitle}>
-                <a href={project.link}>{project.title}</a>
+                {project.title}
               </h2>
               <p className={styles.projectDescription}>
                 {language === "English"
@@ -28,6 +29,14 @@ function Projects({ language }: LanguageProps): JSX.Element {
                     ? project.description_fr
                     : project.description_es}
               </p>
+              <div style={{ position: 'absolute', bottom: '0', width: '100%' }}>
+                <a href={project.link}>
+                  <AiFillGithub size={25} color="#181717" />
+                </a>
+                {project.youtube_link && <a href={project.youtube_link}>
+                  <AiFillYoutube size={25} color="#FF0000" />
+                </a>}
+              </div>
             </li>
           );
         })}

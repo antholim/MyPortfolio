@@ -4,6 +4,7 @@ export interface Project {
   description_fr?: string;
   description_es?: string;
   link: string;
+  youtube_link?: string;
 }
 
 export const PROJECTS: Project[] = [
@@ -16,6 +17,7 @@ export const PROJECTS: Project[] = [
     description_es:
       "Un juego de supervivencia de monstruos construido para el curso de desarrollo de programas en GUI. El jugador controla un personaje esqueleto, con el objetivo de sobrevivir el mayor número de rondas posible.",
     link: "https://github.com/antholim/Monster-Mini-Game",
+    youtube_link : "https://youtu.be/8UTNXmwoD44"
   },
   {
     title: "Crossword Mini Game",
@@ -26,6 +28,7 @@ export const PROJECTS: Project[] = [
     description_es:
       "Una aplicación interactiva de crucigramas construida para el curso de desarrollo de programas en GUI utilizando JavaFX con una estructura MVC.",
     link: "https://github.com/antholim/Crossword-Mini-Game",
+    youtube_link : "https://youtu.be/4fvpwskEVgA"
   },
   {
     title: "Cipher Steganography Cracker",
