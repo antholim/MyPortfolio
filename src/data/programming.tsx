@@ -1,25 +1,4 @@
 import { ReactNode } from "react";
-import {
-  FaGit,
-  FaGithub,
-  FaGitlab,
-  FaDocker,
-  FaJava,
-  FaNode,
-} from "react-icons/fa";
-import { SiJest, SiPlaywright, SiPuppeteer } from "react-icons/si"; // Example icons from react-icons
-import {
-  SiPython,
-  SiC,
-  SiJavascript,
-  SiTypescript,
-  SiHtml5,
-  SiCss3,
-  SiReact,
-  SiExpress,
-  SiMongodb,
-  SiMysql,
-} from "react-icons/si";
 
 export interface Tool {
   name: string;
