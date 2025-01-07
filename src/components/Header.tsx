@@ -23,7 +23,7 @@ function Header({ language, setLanguage }: LanguageProps): JSX.Element {
     }
   };
 
-  function handleDownload(language:Languages) {
+  function handleDownload(language:Languages | string) {
     if (language === "French") {
       const pdfUrl = "/Lim_Anthony_40281180_CV_Francais.pdf";
       window.open(pdfUrl, "_blank");
@@ -68,7 +68,7 @@ function Header({ language, setLanguage }: LanguageProps): JSX.Element {
         {navBarLink.map((link, index) => (
           href[index] !== "download" ? <a key={index} href={`#${href[index]}`} className={styles.navItem}>
             {link}
-          </a> : <a className={styles.navItem} onClick={()=> handleDownload(language)}>
+          </a> : <a className={styles.navItem} onClick={()=> {handleDownload(language)}}>
             {navBarLink[5]}
           </a>
         ))}
