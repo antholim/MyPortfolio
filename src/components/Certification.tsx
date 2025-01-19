@@ -1,5 +1,5 @@
 import { Certification, CERTIFICATIONS } from "../data/certification.tsx";
-import styles from "../styles/certification.module.css";
+import styles from "../styles/Certification.module.css";
 import { LanguageProps } from "../types/props.ts";
 
 function Certifications({ language }: LanguageProps): JSX.Element {
