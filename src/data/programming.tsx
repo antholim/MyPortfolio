@@ -21,6 +21,7 @@ export const FRAMEWORKS: Tool[] = [
   { name: "React", icon: <i className="devicon-react-plain colored"></i> },
   { name: "Node.js", icon: <i className="devicon-nodejs-plain colored"></i> },
   { name: "Express", icon: <i className="devicon-express-original colored"></i>  },
+  {name : "Spring", icon: <i className="devicon-spring-plain colored"></i>},
 ];
 
 // Databases

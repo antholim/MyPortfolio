@@ -6,6 +6,7 @@ import Projects from "./components/Projects.tsx";
 import ContactMe from "./components/ContactMe.tsx";
 import Skills from "./components/Skills.tsx";
 import Experience from "./components/Experience.tsx";
+import Certifications from "./components/Certification.tsx";
 
 enum Languages {
   English = "English",
@@ -22,6 +23,7 @@ function App() {
       <Experience language={language} />
       <Projects language={language} />
       <Skills language={language} />
+      <Certifications language={language} />
       <ContactMe language={language} />
     </>
   );

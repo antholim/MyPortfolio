@@ -5,7 +5,7 @@ function ContactMe({ language }: LanguageProps): JSX.Element {
   let contact = "Contact Me";
   let rights = "© 2024 Anthony Lim. All rights reserved.";
   if (language === "English") {
-    contact = "Experience";
+    contact = "Contact";
     rights = "© 2024 Anthony Lim. All rights reserved.";
   } else if (language === "French") {
     contact = "Contactez-moi";

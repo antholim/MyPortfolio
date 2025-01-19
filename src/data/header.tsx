@@ -3,6 +3,7 @@ export const navBarLinkEnglish: string[] = [
   "Experience",
   "Projects",
   "Skills",
+  "Certifications",
   "Contact",
   "Download CV",
 ];
@@ -11,6 +12,7 @@ export const navBarLinkFrench: string[] = [
   "Expérience",
   "Projets",
   "Compétances",
+  "Certifications",
   "Contact",
   "Télécharger mon CV",
 ];
@@ -19,6 +21,7 @@ export const navBarLinkSpanish: string[] = [
   "Experiencia",
   "Proyectos",
   "Habilidades",
+  "Certificacións",
   "Contactame",
   "Descargar mi CV",
 ];

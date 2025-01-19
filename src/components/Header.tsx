@@ -12,7 +12,7 @@ enum Languages {
   French = "French",
   Spanish = "Spanish",
 }
-const href: string[] = ["about", "experience", "projects", "skills", "contact", "download"];
+const href: string[] = ["about", "experience", "projects", "skills", "certifications", "contact", "download"];
 
 function Header({ language, setLanguage }: LanguageProps): JSX.Element {
   const handleSelectLanguage = (
@@ -69,7 +69,7 @@ function Header({ language, setLanguage }: LanguageProps): JSX.Element {
           href[index] !== "download" ? <a key={index} href={`#${href[index]}`} className={styles.navItem}>
             {link}
           </a> : <a className={styles.navItem} onClick={()=> {handleDownload(language)}}>
-            {navBarLink[5]}
+            {navBarLink[index]}
           </a>
         ))}
         <select
