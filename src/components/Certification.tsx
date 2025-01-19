@@ -1,7 +1,6 @@
 import { Certification, CERTIFICATIONS } from "../data/certification.tsx";
 import styles from "../styles/certification.module.css";
 import { LanguageProps } from "../types/props.ts";
-import { AiFillGithub } from "react-icons/ai";
 
 function Certifications({ language }: LanguageProps): JSX.Element {
   let certification: string = "Certifications";
