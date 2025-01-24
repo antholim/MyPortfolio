@@ -17,7 +17,7 @@ export interface Certification {
         "Un jeu de survie de monstres construit pour le cours de développement de programmes en GUI. Le joueur contrôle un personnage squelette, visant à survivre le plus longtemps possible.",
       description_es:
         "Un juego de supervivencia de monstruos construido para el curso de desarrollo de programas en GUI. El jugador controla un personaje esqueleto, con el objetivo de sobrevivir el mayor número de rondas posible.",
-      link: "https://concordia.udemy.com/certificate/UC-839af642-4c06-437b-8b1b-535278dc20dd/",
+      link: "https://udemy.com/certificate/UC-839af642-4c06-437b-8b1b-535278dc20dd/",
     },
     {
       title: "Spring Boot 3, Spring Framework 6: Beginner to Guru (In progess)",
