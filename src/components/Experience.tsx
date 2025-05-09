@@ -25,7 +25,7 @@ function Experience({ language }: LanguageProps): JSX.Element {
             <h4>{ex[Language].company}</h4>
             <h4>{ex[Language].date}</h4>
             <ul>
-              {ex[Language].bulletPoints.map((point, index) => {
+              {ex[Language].bulletPoints?.map((point, index) => {
                 return <li key={index}>{point}</li>;
               })}
             </ul>
