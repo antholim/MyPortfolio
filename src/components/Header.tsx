@@ -80,6 +80,7 @@ function Header({ language, setLanguage }: LanguageProps): JSX.Element {
           onChange={handleSelectLanguage}
         >
           {Object.values(Languages).map((lang, index) => (
+            lang === "Spanish" ? <></> :
             <option key={index} value={lang}>
               {lang}
             </option>
