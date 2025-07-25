@@ -5,24 +5,29 @@ export const experiences: Record<
   { title: string; company: string; date: string; bulletPoints?: string[] }
 >[] = [
   {
-    English: {
-      title: "Software Development Intern",
-      company: "Intelcom | Dragonfly",
-      date: "Summer 2025",
-      bulletPoints: [
-        "Successfully developed a Kotlin-based Android application for real-time package scanning and tracking, which passed trials in sorting stations and significantly improved delivery productivity and workflow visibility",
-        "Designed and implemented a Continuous Deployment (CD) pipeline and improved CI runtime by 60% with the usage of a prebuilt Docker image to skip JDK builds."
-      ],
-    },
-    French: {
-      title: "Stagiare en développement logiciel",
-      company: "Intelcom | Dragonfly",
-      date: "Été 2025",
-      bulletPoints: [
-        "Développement d'une application Android en Kotlin pour la numérisation et le suivi des colis en temps réel, ayant passé avec succès les essais dans les stations de tri et amélioré de manière significative la productivité des livraisons ainsi que la visibilité du flux de travail.",
-        "Développement et mise en oeuvre d'un pipeline de déploiement continu (CD), ainsi qu'une amélioration de 60 % du temps d'exécution de l'intégration continue (CI) grâce à l'utilisation d'une image Docker pré-construite."
-      ],
-    },
+English: {
+  title: "Software Development Intern",
+  company: "Intelcom | Dragonfly",
+  date: "Summer 2025",
+  bulletPoints: [
+    "Successfully developed a Kotlin-based Android application for real-time package scanning and tracking, which passed trials in sorting stations and significantly improved delivery productivity and workflow visibility.",
+    "Developed and deployed 2 Android applications in Kotlin across 20+ sorting stations for real-time package scanning and tracking, leading to a 98% improvement in sorting station workflow visibility and delivery throughput.",
+    "Designed and implemented an identification system using Azure Function to track permanent and temporary workers.",
+    "Wrote 100+ unit and integration tests using JUnit 5 and Mockito, ensuring 90%+ code coverage and reducing production bugs."
+  ],
+},
+
+French: {
+  title: "Stagiaire en développement logiciel",
+  company: "Intelcom | Dragonfly",
+  date: "Été 2025",
+  bulletPoints: [
+    "Développement d'une application Android en Kotlin pour la numérisation et le suivi des colis en temps réel, ayant passé avec succès les essais dans les stations de tri et amélioré de manière significative la productivité des livraisons ainsi que la visibilité du flux de travail.",
+    "Développement et déploiement de deux applications Android en Kotlin dans plus de 20 stations de tri pour la numérisation et le suivi des colis en temps réel, entraînant une amélioration de 98 % de la visibilité du flux de travail et du débit de livraison.",
+    "Conception et mise en œuvre d’un système d’identification basé sur Azure Function pour le suivi des employés permanents et temporaires.",
+    "Rédaction de plus de 100 tests unitaires et d'intégration avec JUnit 5 et Mockito, assurant une couverture de code supérieure à 90 % et réduisant les bogues en production."
+  ],
+},
     Spanish: {
       title: "Pasante de Desarrollo de Software",
       company: "Intelcom | Dragonfly",
