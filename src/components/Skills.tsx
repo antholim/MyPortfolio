@@ -2,104 +2,66 @@ import {
   Tool,
   LANGUAGES,
   FRAMEWORKS,
-  DATABASES,
-  DEVOPS_TOOLS,
-  TESTING_TOOLS,
+  DATA_INFRA,
+  TOOLS,
   KEY_WORDS,
-} from "../data/programming.tsx";
+} from "../data/programming";
 import styles from "../styles/skills.module.css";
-import { LanguageProps } from "../types/props.ts";
+import { LanguageProps } from "../types/props";
+
+type Lang = "english" | "french" | "spanish";
+
+const EYEBROW: Record<string, string> = {
+  English: "04 / skills",
+  French:  "04 / compétences",
+  Spanish: "04 / habilidades",
+};
+
+const HEADINGS: Record<string, string> = {
+  English: "Skills",
+  French:  "Compétences",
+  Spanish: "Habilidades",
+};
+
+const GROUPS = [
+  { key: "language" as const,  tools: LANGUAGES,  index: "01" },
+  { key: "framework" as const, tools: FRAMEWORKS, index: "02" },
+  { key: "database" as const,  tools: DATA_INFRA, index: "03" },
+  { key: "tools" as const,     tools: TOOLS,      index: "04" },
+];
 
 function Skills({ language }: LanguageProps): JSX.Element {
-  let keyWords = KEY_WORDS.english;
-  if (language === "English") {
-    keyWords = KEY_WORDS.english;
-  } else if (language === "French") {
-    keyWords = KEY_WORDS.french;
-  } else if (language === "Spanish") {
-    keyWords = KEY_WORDS.spanish;
-  }
+  const langKey: Lang =
+    language === "French" ? "french" : language === "Spanish" ? "spanish" : "english";
+  const kw = KEY_WORDS[langKey];
+
   return (
-    <section className={styles.skillsGrid} id="skills">
-      <section>
-        <h2>{keyWords.language}</h2>
-        <ul className={styles.skills}>
-          {LANGUAGES.map((language: Tool) => {
-            return (
-              <li className={styles.skillCard}>
-                <span className={styles.skillTitle}>
-                  {language.icon} {language.name}
+    <section id="skills" className={styles.section}>
+      <div className={styles.header}>
+        <span className={styles.eyebrow}>{EYEBROW[language] ?? EYEBROW.English}</span>
+        <h2 className={styles.heading}>{HEADINGS[language] ?? HEADINGS.English}</h2>
+      </div>
+
+      <div className={styles.groups}>
+        {GROUPS.map(({ key, tools, index }) => (
+          <div key={key} className={styles.group}>
+            <div className={styles.groupHeader}>
+              <span className={styles.groupIndex}>{index}</span>
+              <span className={styles.groupName}>{kw[key]}</span>
+            </div>
+            <div className={styles.chips}>
+              {tools.map((tool: Tool) => (
+                <span key={tool.name} className={styles.chip}>
+                  {tool.icon}
+                  {tool.name}
                 </span>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-      <section>
-        <h2>{keyWords.framework}</h2>
-        <ul className={styles.skills}>
-          {FRAMEWORKS.map((framework: Tool) => {
-            return (
-              <li className={styles.skillCard}>
-                <span className={styles.skillTitle}>
-                  {framework.icon} {framework.name}
-                </span>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-      {/* <h2>Frameworks / Libraries</h2>
-            {FRAMEWORKS.map((framework: Tool) => {
-                return (
-                    <div className={styles.skillCard}>
-                        <span className={styles.skillTitle}>{framework.icon} {framework.name}</span>
-                    </div>
-                )
-            })} */}
-      <section>
-        <h2>{keyWords.database}</h2>
-        <ul className={styles.skills}>
-          {DATABASES.map((database: Tool) => {
-            return (
-              <li className={styles.skillCard}>
-                <span className={styles.skillTitle}>
-                  {database.icon} {database.name}
-                </span>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-      <section>
-        <h2>{keyWords.versionControl}</h2>
-        <ul className={styles.skills}>
-          {DEVOPS_TOOLS.map((devops: Tool) => {
-            return (
-              <li className={styles.skillCard}>
-                <span className={styles.skillTitle}>
-                  {devops.icon} {devops.name}
-                </span>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-      <section>
-        <h2>{keyWords.testing}</h2>
-        <ul className={styles.skills}>
-          {TESTING_TOOLS.map((testing: Tool) => {
-            return (
-              <li className={styles.skillCard}>
-                <span className={styles.skillTitle}>
-                  {testing.icon} {testing.name}
-                </span>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
+
 export default Skills;

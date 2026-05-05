@@ -1,17 +1,45 @@
-export const DESCRIPTION: string[] = [
-  `Hello there ! I am Anthony Lim, a software engineer student enrolled in a Co-op program at Concordia.
-     Previously, I have completed a Computer Science and Mathematics Degree at College Bois-De-Boulogne. 
-     I'm passionate about web development and building innovative applications that address real-world challenges. 
-     In this website, you will find projects that I have made throughout my career as a developer.`,
+export interface AboutContent {
+  eyebrow: string;
+  role: string;
+  tagline: string;
+  description: string;
+  ctaPrimary: string;
+  ctaResume: string;
+  ctaContact: string;
+}
 
-  `Salut à tous ! Je suis Anthony Lim, étudiant en génie logiciel inscrit dans un programme coopératif à l'université de Concordia.
-     Précédemment, j'ai obtenu un diplôme en sciences, informatiques et en mathématique au Collège Bois-De-Boulogne. Présentement, je suis passionné 
-     par le développement web et la création d'applications qui répondent aux défis du monde réel. Dans ce site, vous trouverez des projets que j'ai réalisés
-     au cours de ma carrière en tant que développeur.`,
-
-  `Hola a todos ! Me llamo Anthony Lim, soy un estudiante de ingeniería de software en la Universidad de Concordia en Montreal.
-     Anteriormente, obtuve un diploma en ciencias de la computación y matemáticas en el Collège Bois-De-Boulogne. 
-     Ahora mismo, profundizo mis conocimientos en el desarrollo web y la creación de aplicaciones innovadoras que resuelvan desafíos del mundo real.
-     En este sitio web, encontrarás proyectos que he realizado a lo largo de mi carrera como desarrollador. Aunque mi lengua materna no es el español, me encanta muchisimo 
-     aprender nuevos idiomas y por eso, he decidido traducir mi sitio web en español. Si encuentras errores en la traducción, no dudes en contactarme por email para que pueda corregirlos.`,
-];
+export const ABOUT: Record<"English" | "French" | "Spanish", AboutContent> = {
+  English: {
+    eyebrow: "00 / about",
+    role: "Software engineer · Concordia Co-op",
+    tagline:
+      "Building reliable systems from Android floor-scanners shipping packages to AI tooling that wins hackathons.",
+    description:
+      "Hi I'm Anthony Lim, a Software Engineering student at Concordia (Co-op, GPA 3.64). I'm joining Google as a Software Developer Intern in Summer 2026 after a year at Intelcom — Dragonfly building Kotlin Android apps and C# microservices that move real packages through real warehouses. I care about systems that hold up in production and code that's worth coming back to.",
+    ctaPrimary: "antho.lim44@gmail.com",
+    ctaResume: "Resume",
+    ctaContact: "Get in touch",
+  },
+  French: {
+    eyebrow: "00 / à propos",
+    role: "Ingénieur logiciel · Concordia Co-op",
+    tagline:
+      "Bâtir des systèmes fiables — des scanners Android en entrepôt aux outils IA primés en hackathon.",
+    description:
+      "Bonjour — je suis Anthony Lim, étudiant en génie logiciel à Concordia (Co-op, GPA 3,64). Je rejoindrai Google comme stagiaire en développement logiciel à l'été 2026 après une année chez Intelcom — Dragonfly à développer des applications Android en Kotlin et des microservices C# qui déplacent de vrais colis dans de vrais entrepôts. Je m'intéresse aux systèmes qui tiennent en production et au code qu'on relit avec plaisir.",
+    ctaPrimary: "antho.lim44@gmail.com",
+    ctaResume: "CV",
+    ctaContact: "Me contacter",
+  },
+  Spanish: {
+    eyebrow: "00 / sobre mí",
+    role: "Ingeniero de software · Concordia Co-op",
+    tagline:
+      "Construyendo sistemas confiables — desde escáneres Android en almacenes hasta herramientas de IA premiadas.",
+    description:
+      "Hola — soy Anthony Lim, estudiante de ingeniería de software en Concordia (Co-op, GPA 3.64). Me incorporaré a Google como pasante de desarrollo de software en el verano de 2026 tras un año en Intelcom — Dragonfly desarrollando aplicaciones Android en Kotlin y microservicios C# que mueven paquetes reales en almacenes reales.",
+    ctaPrimary: "antho.lim44@gmail.com",
+    ctaResume: "CV",
+    ctaContact: "Contáctame",
+  },
+};

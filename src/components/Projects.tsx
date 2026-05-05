@@ -1,41 +1,93 @@
-import { Project, PROJECTS } from "../data/projects.tsx";
+import { Project, PROJECTS } from "../data/projects";
 import styles from "../styles/projects.module.css";
-import { LanguageProps } from "../types/props.ts";
-import { AiFillGithub, AiFillYoutube } from "react-icons/ai";
+import { LanguageProps } from "../types/props";
+
+type Lang = "English" | "French" | "Spanish";
+
+const HEADINGS: Record<Lang, { eyebrow: string; heading: string }> = {
+  English: { eyebrow: "03 / projects", heading: "Projects" },
+  French:  { eyebrow: "03 / projets",  heading: "Projets"   },
+  Spanish: { eyebrow: "03 / proyectos", heading: "Proyectos" },
+};
+
+function GithubIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.807 1.305 3.492.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23A11.51 11.51 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
+    </svg>
+  );
+}
+
+function YoutubeIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+    </svg>
+  );
+}
 
 function Projects({ language }: LanguageProps): JSX.Element {
-  let project: string = "Projects";
-  if (language === "English") {
-    project = "Projects";
-  } else if (language === "French") {
-    project = "Projets";
-  } else if (language === "Spanish") {
-    project = "Proyectos";
-  }
+  const lang: Lang =
+    language === "French" ? "French" : language === "Spanish" ? "Spanish" : "English";
+  const { eyebrow, heading } = HEADINGS[lang];
+
   return (
-    <section className={styles.projectsGrid} id="projects">
-      <h2>{project}</h2>
-      <ul className={styles.projects}>
-        {PROJECTS.map((project: Project, index: number) => {
+    <section id="projects" className={styles.section}>
+      <div className={styles.header}>
+        <span className={styles.eyebrow}>{eyebrow}</span>
+        <h2 className={styles.heading}>{heading}</h2>
+      </div>
+
+      <ul className={styles.grid}>
+        {PROJECTS.map((project: Project, i) => {
+          const desc =
+            lang === "French" && project.description_fr
+              ? project.description_fr
+              : lang === "Spanish" && project.description_es
+              ? project.description_es
+              : project.description;
+          const award =
+            lang === "French" && project.award_fr
+              ? project.award_fr
+              : lang === "Spanish" && project.award_es
+              ? project.award_es
+              : project.award;
+
           return (
-            <li key={index} className={styles.projectCard}>
-              <h2 className={styles.projectTitle}>
-                {project.title}
-              </h2>
-              <p className={styles.projectDescription}>
-                {language === "English"
-                  ? project.description
-                  : language === "French"
-                    ? project.description_fr
-                    : project.description_es}
-              </p>
-              <div style={{ position: 'absolute', bottom: '0', width: '100%' }}>
-                <a href={project.link}>
-                  <AiFillGithub size={25} color="#181717" />
-                </a>
-                {project.youtube_link && <a href={project.youtube_link}>
-                  <AiFillYoutube size={25} color="#FF0000" />
-                </a>}
+            <li key={i} className={styles.card}>
+              {award && <span className={styles.award}>🏆 {award}</span>}
+              <h3 className={styles.title}>{project.title}</h3>
+              <p className={styles.description}>{desc}</p>
+              {project.stack && project.stack.length > 0 && (
+                <div className={styles.stack}>
+                  {project.stack.map((t) => (
+                    <span key={t} className={styles.chip}>{t}</span>
+                  ))}
+                </div>
+              )}
+              <div className={styles.foot}>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    className={styles.iconLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${project.title} GitHub`}
+                  >
+                    <GithubIcon /> GitHub
+                  </a>
+                )}
+                {project.youtube_link && (
+                  <a
+                    href={project.youtube_link}
+                    className={styles.iconLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${project.title} demo`}
+                  >
+                    <YoutubeIcon /> Demo
+                  </a>
+                )}
               </div>
             </li>
           );
@@ -44,4 +96,5 @@ function Projects({ language }: LanguageProps): JSX.Element {
     </section>
   );
 }
+
 export default Projects;

@@ -1,93 +1,207 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "../styles/Header.module.css";
 import { LanguageProps } from "../types/props";
 import {
   navBarLinkEnglish,
-  navBarLinkSpanish,
   navBarLinkFrench,
+  navBarLinkSpanish,
+  NAV_HREF,
 } from "../data/header";
+import ThemeToggle from "./ThemeToggle";
 
 enum Languages {
   English = "English",
   French = "French",
   Spanish = "Spanish",
 }
-const href: string[] = ["about", "experience", "projects", "skills", "certifications", "contact", "download"];
+
+function pickNav(language: string): string[] {
+  if (language === "French") return navBarLinkFrench;
+  if (language === "Spanish") return navBarLinkSpanish;
+  return navBarLinkEnglish;
+}
 
 function Header({ language, setLanguage }: LanguageProps): JSX.Element {
-  const handleSelectLanguage = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    if (setLanguage) {
-      setLanguage(event.target.value as Languages);
-    }
+  const [hidden, setHidden] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState<string>("about");
+  const lastY = useRef(0);
+
+  const navItems = pickNav(language);
+  const visibleHrefs = NAV_HREF.filter((h) => h !== "download");
+
+  const handleSelectLanguage = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    if (setLanguage) setLanguage(event.target.value as Languages);
   };
 
-  function handleDownload(language:Languages | string) {
-    if (language === "French") {
-      const pdfUrl = "/Lim_Anthony_40281180_CV_Francais.pdf";
-      window.open(pdfUrl, "_blank");
-    } else {
-      const pdfUrl = "/Lim_Anthony_40281180_CV.pdf";
-      window.open(pdfUrl, "_blank");
-    }
+  function handleDownload() {
+    const pdfUrl =
+      language === "French"
+        ? "/Lim_Anthony_40281180_CV_Francais.pdf"
+        : "/Lim_Anthony_40281180_CV.pdf";
+    window.open(pdfUrl, "_blank", "noopener,noreferrer");
   }
 
-  const navBarLink =
-    language === "English"
-      ? navBarLinkEnglish
-      : language === "French"
-        ? navBarLinkFrench
-        : navBarLinkSpanish;
-
-  // Scroll effect to hide/show header
   useEffect(() => {
-    let lastScrollTop = 0;
-    const header = document.querySelector(`.${styles.header}`) as HTMLElement; // Type assertion
-
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop > lastScrollTop) {
-        // Scrolling down, hide header
-        header.style.top = "-100px";
-      } else {
-        // Scrolling up, show header
-        header.style.top = "0";
-      }
-      lastScrollTop = scrollTop;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setHidden(y > lastY.current && y > 80);
+      lastY.current = y;
     };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible?.target?.id) setActive(visible.target.id);
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
+    );
+    visibleHrefs.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  const headerClass = `${styles.header} ${hidden && !open ? styles.headerHidden : ""}`;
+
   return (
-    <header className={styles.header}>
-      <div className={styles.logo}>Anthony Lim</div>
-      <nav className={styles.navLinks}>
-        {navBarLink.map((link, index) => (
-          href[index] !== "download" ? <a key={index} href={`#${href[index]}`} className={styles.navItem}>
-            {link}
-          </a> : <a className={styles.navItem} onClick={()=> {handleDownload(language)}}>
-            {navBarLink[index]}
-          </a>
-        ))}
-        <select
-          className={styles.language}
-          name="select-language"
-          id="select-language"
-          value={language} // Ensures the selected language is displayed
-          onChange={handleSelectLanguage}
+    <>
+      <header className={headerClass}>
+        <a href="#about" className={styles.logo} onClick={() => setOpen(false)}>
+          <span className={styles.logoMark}>AL</span>
+          Anthony Lim
+        </a>
+
+        <nav className={styles.desktopNav} aria-label="Primary">
+          <ul className={styles.navList}>
+            {navItems.map((label, i) => {
+              const href = NAV_HREF[i];
+              if (href === "download") return null;
+              const isActive = active === href;
+              return (
+                <li key={href}>
+                  <a
+                    href={`#${href}`}
+                    className={`${styles.navItem} ${isActive ? styles.navItemActive : ""}`}
+                  >
+                    {label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className={styles.controls}>
+            <ThemeToggle className={styles.iconBtn} />
+            <span className={styles.langWrap}>
+              <select
+                className={styles.langSelect}
+                aria-label="Language"
+                value={language}
+                onChange={handleSelectLanguage}
+              >
+                {Object.values(Languages).map((lang) =>
+                  lang === "Spanish" ? null : (
+                    <option key={lang} value={lang}>
+                      {lang === "English" ? "EN" : "FR"}
+                    </option>
+                  )
+                )}
+              </select>
+              <span className={styles.langCaret} aria-hidden="true">▾</span>
+            </span>
+            <button type="button" className={styles.cv} onClick={handleDownload}>
+              {navItems[NAV_HREF.indexOf("download")]} ↗
+            </button>
+          </div>
+        </nav>
+
+        <button
+          type="button"
+          className={`${styles.menuBtn} ${open ? styles.menuOpen : ""}`}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
         >
-          {Object.values(Languages).map((lang, index) => (
-            lang === "Spanish" ? <></> :
-            <option key={index} value={lang}>
-              {lang}
-            </option>
-          ))}
-        </select>
-      </nav>
-    </header>
+          <span className={styles.menuBars}>
+            <span />
+          </span>
+        </button>
+      </header>
+
+      <div
+        className={`${styles.mobileSheet} ${open ? styles.mobileSheetOpen : ""}`}
+        aria-hidden={!open}
+      >
+        {navItems.map((label, i) => {
+          const href = NAV_HREF[i];
+          if (href === "download") {
+            return (
+              <button
+                key="dl"
+                type="button"
+                className={styles.mobileNavItem}
+                onClick={() => {
+                  handleDownload();
+                  setOpen(false);
+                }}
+              >
+                <span>{label}</span>
+                <span className={styles.mobileNavIndex}>↗</span>
+              </button>
+            );
+          }
+          return (
+            <a
+              key={href}
+              href={`#${href}`}
+              className={styles.mobileNavItem}
+              onClick={() => setOpen(false)}
+            >
+              <span>{label}</span>
+              <span className={styles.mobileNavIndex}>
+                {String(i).padStart(2, "0")}
+              </span>
+            </a>
+          );
+        })}
+        <div className={styles.mobileFoot}>
+          <ThemeToggle className={styles.iconBtn} />
+          <span className={styles.langWrap}>
+            <select
+              className={styles.langSelect}
+              aria-label="Language"
+              value={language}
+              onChange={handleSelectLanguage}
+            >
+              {Object.values(Languages).map((lang) =>
+                lang === "Spanish" ? null : (
+                  <option key={lang} value={lang}>
+                    {lang === "English" ? "EN" : "FR"}
+                  </option>
+                )
+              )}
+            </select>
+            <span className={styles.langCaret} aria-hidden="true">▾</span>
+          </span>
+        </div>
+      </div>
+    </>
   );
 }
 
