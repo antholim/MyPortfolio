@@ -30,6 +30,13 @@
 
 .identity {
   display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.identityText {
+  display: flex;
   flex-direction: column;
   gap: 0.15rem;
   min-width: 0;

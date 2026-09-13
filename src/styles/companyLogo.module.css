@@ -1,0 +1,49 @@
+/*
+ * App-icon style tile. The ground stays white in both themes because the logos
+ * are brand marks drawn for light backgrounds.
+ */
+.tile {
+  position: relative;
+  display: grid;
+  place-items: center;
+  /* Wide enough that a wordmark (IBM) stays legible beside square marks,
+     and identical on every card so the text column still lines up. */
+  width: 96px;
+  height: 52px;
+  flex: none;
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+[data-theme="dark"] .tile {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* Absolutely positioned so the box is definite: a percentage height on a
+   centred grid item resolves to auto, and the image then sizes to its own
+   aspect ratio and gets cropped by the tile. */
+.tile img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px 10px;
+}
+
+.monogram {
+  font-size: var(--step-0);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #1d1d1f;
+}
+
+@media (max-width: 640px) {
+  .tile {
+    width: 78px;
+    height: 46px;
+  }
+}

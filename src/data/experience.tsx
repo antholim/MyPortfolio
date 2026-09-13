@@ -10,6 +10,7 @@ export interface ExperienceEntry {
   title: string;
   company: string;
   team?: string;
+  logo?: string;
   location?: string;
   date: string;
   current?: boolean;
@@ -28,6 +29,7 @@ export const experiences: Record<Language, ExperienceEntry>[] = [
     English: {
       title: "Software Developer Intern",
       company: "IBM Consulting",
+      logo: "/logos/ibm.svg",
       location: "Montreal, QC",
       date: "Sept 2026 – Dec 2026",
       current: true,
@@ -37,6 +39,7 @@ export const experiences: Record<Language, ExperienceEntry>[] = [
     French: {
       title: "Stagiaire en développement logiciel",
       company: "IBM Consulting",
+      logo: "/logos/ibm.svg",
       location: "Montréal, QC",
       date: "Sept 2026 – Déc 2026",
       current: true,
@@ -46,6 +49,7 @@ export const experiences: Record<Language, ExperienceEntry>[] = [
     Spanish: {
       title: "Pasante de Desarrollo de Software",
       company: "IBM Consulting",
+      logo: "/logos/ibm.svg",
       location: "Montreal, QC",
       date: "Sept 2026 – Dic 2026",
       current: true,
@@ -57,6 +61,7 @@ export const experiences: Record<Language, ExperienceEntry>[] = [
     English: {
       title: "Software Developer Intern",
       company: "Google",
+      logo: "/logos/google.png",
       team: "Google Workspace, AI Safety Team",
       location: "Waterloo, ON",
       date: "May 2026 – Jul 2026",
@@ -69,6 +74,7 @@ export const experiences: Record<Language, ExperienceEntry>[] = [
     French: {
       title: "Stagiaire en développement logiciel",
       company: "Google",
+      logo: "/logos/google.png",
       team: "Google Workspace, Équipe sécurité IA",
       location: "Waterloo, ON",
       date: "Mai 2026 – Juil. 2026",
@@ -81,6 +87,7 @@ export const experiences: Record<Language, ExperienceEntry>[] = [
     Spanish: {
       title: "Pasante de Desarrollo de Software",
       company: "Google",
+      logo: "/logos/google.png",
       team: "Google Workspace, Equipo de Seguridad de IA",
       location: "Waterloo, ON",
       date: "Mayo 2026 – Jul. 2026",
@@ -95,6 +102,7 @@ export const experiences: Record<Language, ExperienceEntry>[] = [
     English: {
       title: "Software Developer Intern",
       company: "Intelcom (Dragonfly)",
+      logo: "/logos/intelcom.png",
       location: "Montreal, QC",
       date: "May 2025 – May 2026",
       stack: ["Kotlin", "C#", "CosmosDB", "Azure", "Terraform", "Pulsar"],
@@ -106,6 +114,7 @@ export const experiences: Record<Language, ExperienceEntry>[] = [
     French: {
       title: "Stagiaire en développement logiciel",
       company: "Intelcom (Dragonfly)",
+      logo: "/logos/intelcom.png",
       location: "Montréal, QC",
       date: "Mai 2025 – Mai 2026",
       stack: ["Kotlin", "C#", "CosmosDB", "Azure", "Terraform", "Pulsar"],
@@ -117,6 +126,7 @@ export const experiences: Record<Language, ExperienceEntry>[] = [
     Spanish: {
       title: "Pasante de Desarrollo de Software",
       company: "Intelcom (Dragonfly)",
+      logo: "/logos/intelcom.png",
       location: "Montreal, QC",
       date: "Mayo 2025 – Mayo 2026",
       stack: ["Kotlin", "C#", "CosmosDB", "Azure", "Terraform", "Pulsar"],
@@ -130,6 +140,7 @@ export const experiences: Record<Language, ExperienceEntry>[] = [
     English: {
       title: "Software Developer Intern",
       company: "X2O Media",
+      logo: "/logos/x2o.png",
       location: "Montreal, QC",
       date: "Sept 2024 – Dec 2024",
       stack: ["Playwright", "TypeScript", "React Native"],
@@ -142,6 +153,7 @@ export const experiences: Record<Language, ExperienceEntry>[] = [
     French: {
       title: "Stagiaire en développement logiciel",
       company: "X2O Media",
+      logo: "/logos/x2o.png",
       location: "Montréal, QC",
       date: "Sept 2024 – Déc 2024",
       stack: ["Playwright", "TypeScript", "React Native"],
@@ -154,6 +166,7 @@ export const experiences: Record<Language, ExperienceEntry>[] = [
     Spanish: {
       title: "Pasante de Desarrollo de Software",
       company: "X2O Media",
+      logo: "/logos/x2o.png",
       location: "Montreal, QC",
       date: "Sept 2024 – Dic 2024",
       stack: ["Playwright", "TypeScript", "React Native"],
@@ -168,6 +181,7 @@ export const experiences: Record<Language, ExperienceEntry>[] = [
     English: {
       title: "Teaching Assistant",
       company: "Concordia University",
+      logo: "/logos/concordia.png",
       location: "Montreal, QC",
       date: "Sept 2025 – Apr 2026",
       stack: ["LaTeX", "SQL", "Discrete Mathematics"],
@@ -179,6 +193,7 @@ export const experiences: Record<Language, ExperienceEntry>[] = [
     French: {
       title: "Assistant d'enseignement",
       company: "Université Concordia",
+      logo: "/logos/concordia.png",
       location: "Montréal, QC",
       date: "Sept 2025 – Avr. 2026",
       stack: ["LaTeX", "SQL", "Mathématiques discrètes"],
@@ -190,6 +205,7 @@ export const experiences: Record<Language, ExperienceEntry>[] = [
     Spanish: {
       title: "Asistente de Enseñanza",
       company: "Universidad Concordia",
+      logo: "/logos/concordia.png",
       location: "Montreal, QC",
       date: "Sept 2025 – Abr. 2026",
       stack: ["LaTeX", "SQL", "Matemáticas Discretas"],

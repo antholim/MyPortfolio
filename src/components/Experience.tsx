@@ -1,6 +1,7 @@
 import styles from "../styles/experience.module.css";
 import section from "../styles/section.module.css";
 import SectionHeader from "./SectionHeader";
+import CompanyLogo from "./CompanyLogo";
 import { LanguageProps } from "../types/props";
 import { experiences, Language, CURRENT_LABEL } from "../data/experience";
 
@@ -45,9 +46,12 @@ function Experience({ language }: LanguageProps): JSX.Element {
               >
                 <div className={styles.top}>
                   <div className={styles.identity}>
-                    <h3 className={styles.company}>{entry.company}</h3>
-                    <p className={styles.role}>{entry.title}</p>
-                    {entry.team && <p className={styles.team}>{entry.team}</p>}
+                    <CompanyLogo src={entry.logo} company={entry.company} />
+                    <div className={styles.identityText}>
+                      <h3 className={styles.company}>{entry.company}</h3>
+                      <p className={styles.role}>{entry.title}</p>
+                      {entry.team && <p className={styles.team}>{entry.team}</p>}
+                    </div>
                   </div>
 
                   <div className={styles.meta}>
