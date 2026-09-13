@@ -2,5 +2,5 @@ import React from "react";
 
 export interface LanguageProps {
   language: string;
-  setLanguage?: React.Dispatch<React.SetStateAction<Languages | string>>;
+  setLanguage?: React.Dispatch<React.SetStateAction<string>>;
 }

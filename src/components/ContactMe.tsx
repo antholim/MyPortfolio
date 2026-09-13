@@ -3,27 +3,42 @@ import { LanguageProps } from "../types/props";
 
 type Lang = "English" | "French" | "Spanish";
 
-const CONTENT: Record<Lang, {
-  eyebrow: string;
-  heading: string;
-  rights: string;
-}> = {
+const CONTENT: Record<
+  Lang,
+  { label: string; heading: string; blurb: string; cta: string; rights: string }
+> = {
   English: {
-    eyebrow: "06 / contact",
-    heading: "Let's work\ntogether.",
-    rights: "© 2026 Anthony Lim. All rights reserved.",
+    label: "Contact",
+    heading: "Let's build something.",
+    blurb: "Open to software engineering roles and internships in Montreal, remote, or elsewhere.",
+    cta: "Get in touch",
+    rights: "© 2026 Anthony Lim",
   },
   French: {
-    eyebrow: "06 / contact",
-    heading: "Travaillons\nensemble.",
-    rights: "© 2026 Anthony Lim. Tous droits réservés.",
+    label: "Contact",
+    heading: "Bâtissons quelque chose.",
+    blurb: "Ouvert aux postes et stages en génie logiciel à Montréal, à distance ou ailleurs.",
+    cta: "Me contacter",
+    rights: "© 2026 Anthony Lim",
   },
   Spanish: {
-    eyebrow: "06 / contacto",
-    heading: "Trabajemos\njuntos.",
-    rights: "© 2026 Anthony Lim. Todos los derechos reservados.",
+    label: "Contacto",
+    heading: "Construyamos algo.",
+    blurb: "Abierto a puestos y pasantías de ingeniería de software en Montreal, remoto o donde sea.",
+    cta: "Contáctame",
+    rights: "© 2026 Anthony Lim",
   },
 };
+
+const LINKS = [
+  { label: "Email", value: "antho.lim44@gmail.com", href: "mailto:antho.lim44@gmail.com" },
+  {
+    label: "LinkedIn",
+    value: "linkedin.com/in/antho-lim",
+    href: "https://www.linkedin.com/in/antho-lim/",
+  },
+  { label: "GitHub", value: "github.com/antholim", href: "https://github.com/antholim" },
+];
 
 function ContactMe({ language }: LanguageProps): JSX.Element {
   const lang: Lang =
@@ -33,49 +48,37 @@ function ContactMe({ language }: LanguageProps): JSX.Element {
   return (
     <section id="contact" className={styles.section}>
       <div className={styles.inner}>
-        <div className={styles.left}>
-          <span className={styles.eyebrow}>{c.eyebrow}</span>
-          <h2 className={styles.heading}>
-            {c.heading.split("\n").map((line, i) => (
-              <span key={i} style={{ display: "block" }}>{line}</span>
+        <div className={styles.panel} data-reveal>
+          <span className={styles.label}>{c.label}</span>
+          <h2 className={styles.heading}>{c.heading}</h2>
+          <p className={styles.blurb}>{c.blurb}</p>
+
+          <a href="mailto:antho.lim44@gmail.com" className={styles.cta}>
+            {c.cta}
+          </a>
+
+          <ul className={styles.links}>
+            {LINKS.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className={styles.link}
+                  {...(link.href.startsWith("http")
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                >
+                  <span className={styles.linkLabel}>{link.label}</span>
+                  <span className={styles.linkValue}>{link.value}</span>
+                </a>
+              </li>
             ))}
-          </h2>
-          <div className={styles.links}>
-            <a href="mailto:antho.lim44@gmail.com" className={styles.link}>
-              <span className={styles.linkLabel}>Email</span>
-              antho.lim44@gmail.com ↗
-            </a>
-            <a
-              href="https://www.linkedin.com/in/antho-lim/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.link}
-            >
-              <span className={styles.linkLabel}>LinkedIn</span>
-              linkedin.com/in/antho-lim ↗
-            </a>
-            <a
-              href="https://github.com/antholim"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.link}
-            >
-              <span className={styles.linkLabel}>GitHub</span>
-              github.com/antholim ↗
-            </a>
-          </div>
+          </ul>
         </div>
 
-        <div className={styles.right}>
-          <a
-            href="mailto:antho.lim44@gmail.com"
-            className={styles.bigArrow}
-            aria-label="Send email"
-          >
-            ↗
-          </a>
-          <p className={styles.footer}>{c.rights}</p>
-        </div>
+        <footer className={styles.footer}>
+          <span>{c.rights}</span>
+          <span>Built with React &amp; Vite</span>
+        </footer>
       </div>
     </section>
   );

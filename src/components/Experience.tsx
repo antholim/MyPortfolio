@@ -1,57 +1,88 @@
 import styles from "../styles/experience.module.css";
+import section from "../styles/section.module.css";
+import SectionHeader from "./SectionHeader";
 import { LanguageProps } from "../types/props";
-import { experiences, Language } from "../data/experience";
+import { experiences, Language, CURRENT_LABEL } from "../data/experience";
 
-const HEADINGS: Record<Language, { eyebrow: string; heading: string }> = {
-  English: { eyebrow: "01 / experience", heading: "Experience" },
-  French:  { eyebrow: "01 / expérience", heading: "Expérience" },
-  Spanish: { eyebrow: "01 / experiencia", heading: "Experiencia" },
+const HEADINGS: Record<Language, { label: string; heading: string; subtitle: string }> = {
+  English: {
+    label: "Experience",
+    heading: "Where I've built things",
+    subtitle: "Four internships and a teaching role, shipping systems that run in production.",
+  },
+  French: {
+    label: "Expérience",
+    heading: "Où j'ai bâti des choses",
+    subtitle:
+      "Quatre stages et un rôle d'enseignement, à livrer des systèmes qui tournent en production.",
+  },
+  Spanish: {
+    label: "Experiencia",
+    heading: "Dónde he construido",
+    subtitle: "Cuatro pasantías y un rol docente, entregando sistemas que corren en producción.",
+  },
 };
 
 function Experience({ language }: LanguageProps): JSX.Element {
   const lang: Language =
     language === "French" ? "French" : language === "Spanish" ? "Spanish" : "English";
-  const { eyebrow, heading } = HEADINGS[lang];
+  const { label, heading, subtitle } = HEADINGS[lang];
 
   return (
-    <section id="experience" className={styles.section}>
-      <div className={styles.header}>
-        <span className={styles.eyebrow}>{eyebrow}</span>
-        <h2 className={styles.heading}>{heading}</h2>
-      </div>
+    <section id="experience" className={`${section.band} ${section.bandAlt}`}>
+      <div className={section.inner}>
+        <SectionHeader label={label} heading={heading} subtitle={subtitle} />
 
-      <div className={styles.timeline}>
-        {experiences.map((ex, i) => {
-          const entry = ex[lang];
-          return (
-            <article key={i} className={styles.item}>
-              <div className={styles.body}>
-                <p className={styles.company}>{entry.company}</p>
-                <h3 className={styles.title}>{entry.title}</h3>
-                {entry.stack && entry.stack.length > 0 && (
-                  <div className={styles.stack}>
-                    {entry.stack.map((t) => (
-                      <span key={t} className={styles.chip}>{t}</span>
-                    ))}
+        <div className={styles.list}>
+          {experiences.map((ex, i) => {
+            const entry = ex[lang];
+            return (
+              <article
+                key={`${entry.company}-${i}`}
+                className={styles.card}
+                data-reveal
+                style={{ "--i": Math.min(i, 3) } as React.CSSProperties}
+              >
+                <div className={styles.top}>
+                  <div className={styles.identity}>
+                    <h3 className={styles.company}>{entry.company}</h3>
+                    <p className={styles.role}>{entry.title}</p>
+                    {entry.team && <p className={styles.team}>{entry.team}</p>}
                   </div>
-                )}
+
+                  <div className={styles.meta}>
+                    {entry.current && (
+                      <span className={styles.current}>
+                        <span className={styles.currentDot} aria-hidden="true" />
+                        {CURRENT_LABEL[lang]}
+                      </span>
+                    )}
+                    <span className={styles.date}>{entry.date}</span>
+                    {entry.location && <span className={styles.location}>{entry.location}</span>}
+                  </div>
+                </div>
+
                 {entry.bulletPoints && entry.bulletPoints.length > 0 && (
                   <ul className={styles.bullets}>
                     {entry.bulletPoints.map((pt, j) => (
-                      <li key={j} className={styles.bullet}>{pt}</li>
+                      <li key={j}>{pt}</li>
                     ))}
                   </ul>
                 )}
-              </div>
-              <div className={styles.meta}>
-                <span className={styles.date}>{entry.date}</span>
-                {entry.location && (
-                  <span className={styles.location}>{entry.location}</span>
+
+                {entry.stack && entry.stack.length > 0 && (
+                  <div className={styles.stack}>
+                    {entry.stack.map((t) => (
+                      <span key={t} className={styles.chip}>
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 )}
-              </div>
-            </article>
-          );
-        })}
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

@@ -8,15 +8,13 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Certifications from "./components/Certification";
 import ContactMe from "./components/ContactMe";
-
-enum Languages {
-  English = "English",
-  French = "French",
-  Spanish = "Spanish",
-}
+import { Languages } from "./data/experience";
+import { useReveal } from "./hooks/useReveal";
 
 function App() {
-  const [language, setLanguage] = useState<Languages | "">(Languages.English);
+  const [language, setLanguage] = useState<string>(Languages.English);
+  useReveal([language]);
+
   return (
     <div className="shell">
       <Header language={language} setLanguage={setLanguage} />

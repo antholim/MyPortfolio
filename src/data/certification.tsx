@@ -11,22 +11,21 @@ export interface Certification {
 
 export const CERTIFICATIONS: Certification[] = [
   {
-    title: "Docker for the Absolute Beginner — Hands On",
+    title: "Docker for the Absolute Beginner: Hands On",
     issuer: "Udemy",
     year: "2024",
     completed: true,
     description:
-      "Fundamentals of Docker — commands, building images with Dockerfiles, and using Docker Compose to orchestrate application stacks.",
+      "Fundamentals of Docker: commands, building images with Dockerfiles, and using Docker Compose to orchestrate application stacks.",
     description_fr:
-      "Fondamentaux de Docker — commandes, création d'images avec Dockerfile, et utilisation de Docker Compose pour orchestrer des stacks applicatives.",
+      "Fondamentaux de Docker : commandes, création d'images avec Dockerfile, et utilisation de Docker Compose pour orchestrer des stacks applicatives.",
     description_es:
-      "Fundamentos de Docker — comandos, creación de imágenes con Dockerfile y uso de Docker Compose para orquestar stacks de aplicaciones.",
+      "Fundamentos de Docker: comandos, creación de imágenes con Dockerfile y uso de Docker Compose para orquestar stacks de aplicaciones.",
     link: "https://udemy.com/certificate/UC-839af642-4c06-437b-8b1b-535278dc20dd/",
   },
   {
     title: "Spring Boot 3, Spring Framework 6: Beginner to Guru",
     issuer: "Udemy",
-    year: "In progress",
     completed: false,
     description:
       "Building RESTful APIs with Spring (MVC, WebFlux, WebFlux.fn), securing them with OAuth 2.0 and JWT, and persisting data with JPA, MongoDB and MySQL.",

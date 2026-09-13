@@ -15,9 +15,9 @@ export const EDUCATION: Record<"English" | "French" | "Spanish", { heading: stri
       {
         school: "Concordia University",
         degree: "B.Eng. Software Engineering (Co-op)",
-        detail: "GPA 3.64",
+        detail: "GPA 3.62",
         location: "Montreal, QC",
-        date: "2023 — 2027",
+        date: "2023 – 2027",
         courses: [
           "Data Structures & Algorithms",
           "Databases",
@@ -33,7 +33,7 @@ export const EDUCATION: Record<"English" | "French" | "Spanish", { heading: stri
         school: "Collège Bois-de-Boulogne",
         degree: "DEC, Computer Science & Mathematics",
         location: "Montreal, QC",
-        date: "2021 — 2023",
+        date: "2021 – 2023",
         courses: [
           "Data Structures & Algorithms",
           "Discrete Mathematics",
@@ -49,9 +49,9 @@ export const EDUCATION: Record<"English" | "French" | "Spanish", { heading: stri
       {
         school: "Université Concordia",
         degree: "B.Ing. Génie logiciel (Co-op)",
-        detail: "Moyenne 3,64",
+        detail: "Moyenne 3,62",
         location: "Montréal, QC",
-        date: "2023 — 2027",
+        date: "2023 – 2027",
         courses: [
           "Structures de données & Algorithmes",
           "Bases de données",
@@ -67,7 +67,7 @@ export const EDUCATION: Record<"English" | "French" | "Spanish", { heading: stri
         school: "Collège Bois-de-Boulogne",
         degree: "DEC, Sciences informatiques et mathématiques",
         location: "Montréal, QC",
-        date: "2021 — 2023",
+        date: "2021 – 2023",
         courses: [
           "Structures de données & Algorithmes",
           "Mathématiques discrètes",
@@ -83,9 +83,9 @@ export const EDUCATION: Record<"English" | "French" | "Spanish", { heading: stri
       {
         school: "Universidad Concordia",
         degree: "Ing. en Software (Co-op)",
-        detail: "GPA 3,64",
+        detail: "GPA 3,62",
         location: "Montreal, QC",
-        date: "2023 — 2027",
+        date: "2023 – 2027",
         courses: [
           "Estructuras de datos y algoritmos",
           "Bases de datos",
@@ -99,7 +99,7 @@ export const EDUCATION: Record<"English" | "French" | "Spanish", { heading: stri
         school: "Collège Bois-de-Boulogne",
         degree: "DEC, Informática y Matemáticas",
         location: "Montreal, QC",
-        date: "2021 — 2023",
+        date: "2021 – 2023",
       },
     ],
   },

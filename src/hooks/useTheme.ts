@@ -5,10 +5,10 @@ export type Theme = "light" | "dark";
 const STORAGE_KEY = "theme";
 
 function readInitial(): Theme {
-  if (typeof document === "undefined") return "dark";
+  if (typeof document === "undefined") return "light";
   const attr = document.documentElement.getAttribute("data-theme");
   if (attr === "light" || attr === "dark") return attr;
-  return "dark";
+  return "light";
 }
 
 export function useTheme(): { theme: Theme; toggle: () => void; setTheme: (t: Theme) => void } {
@@ -19,7 +19,7 @@ export function useTheme(): { theme: Theme; toggle: () => void; setTheme: (t: Th
     try {
       localStorage.setItem(STORAGE_KEY, next);
     } catch {
-      // ignore — privacy mode etc.
+      // ignore: privacy mode etc.
     }
     setThemeState(next);
   }, []);

@@ -1,119 +1,132 @@
 .section {
-  padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 5vw, 4rem) clamp(3rem, 5vw, 4rem);
-  max-width: var(--content-max);
-  margin: 0 auto;
   width: 100%;
+  background: var(--bg);
+  padding-block: var(--space-8) var(--space-5);
 }
 
 .inner {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: end;
-  border-top: 1px solid var(--line);
-  padding-top: clamp(2.5rem, 5vw, 4rem);
+  width: min(100% - 2 * var(--gutter), var(--content-max));
+  margin-inline: auto;
 }
 
-.left {}
-
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  display: inline-flex;
+/* Closing CTA panel: the rounded "get started" slab at the end of a product page. */
+.panel {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
+  text-align: center;
+  gap: var(--space-3);
+  background:
+    radial-gradient(48rem 22rem at 50% 0%, var(--accent-soft), transparent 70%),
+    var(--bg-alt);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8) var(--space-5);
 }
 
-.eyebrow::before {
-  content: "";
-  display: inline-block;
-  width: 32px;
-  height: 1px;
-  background: var(--accent);
+.label {
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--accent);
 }
 
 .heading {
-  font-family: var(--font-display);
   font-size: var(--step-5);
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  color: var(--text);
-  margin-bottom: 2rem;
+  letter-spacing: -0.04em;
+  max-width: 18ch;
+}
+
+.blurb {
+  font-size: var(--step-2);
+  line-height: 1.45;
+  color: var(--text-muted);
+  max-width: 42ch;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--step-1);
+  font-weight: 600;
+  color: var(--accent-contrast);
+  background: var(--accent);
+  border-radius: var(--radius-pill);
+  padding: 0.8em 2em;
+  margin-top: var(--space-2);
+  transition:
+    background-color 0.22s var(--ease-out),
+    transform 0.22s var(--ease-out);
+}
+
+.cta:hover {
+  background: var(--accent-hover);
+  color: var(--accent-contrast);
+  transform: scale(1.02);
 }
 
 .links {
   display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+  width: 100%;
 }
 
 .link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-mono);
-  font-size: var(--step-0);
-  color: var(--text-muted);
-  transition: color 0.2s var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 0.7rem 1.1rem;
+  color: var(--text);
+  transition:
+    border-color 0.22s var(--ease-out),
+    transform 0.22s var(--ease-out);
 }
 
 .link:hover {
-  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  color: var(--text);
 }
 
 .linkLabel {
-  font-size: var(--step--1);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: var(--step--2);
+  font-weight: 700;
   color: var(--text-faint);
-  min-width: 5rem;
 }
 
-.right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.5rem;
-}
-
-.bigArrow {
-  font-family: var(--font-display);
-  font-size: var(--step-5);
-  color: var(--line-strong);
-  line-height: 1;
-  transition: color 0.3s var(--ease-out);
-  user-select: none;
-}
-
-.bigArrow:hover {
-  color: var(--accent);
+.linkValue {
+  font-size: var(--step--1);
+  font-weight: 600;
+  overflow-wrap: anywhere;
 }
 
 .footer {
-  font-family: var(--font-mono);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line);
   font-size: var(--step--1);
   color: var(--text-faint);
-  text-align: right;
 }
 
-@media (max-width: 600px) {
-  .inner {
-    grid-template-columns: 1fr;
+@media (max-width: 640px) {
+  .panel {
+    padding: var(--space-7) var(--space-4);
   }
-
-  .right {
-    align-items: flex-start;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  .links {
+    flex-direction: column;
   }
-
-  .footer {
-    text-align: left;
+  .cta {
+    width: 100%;
+    justify-content: center;
   }
 }

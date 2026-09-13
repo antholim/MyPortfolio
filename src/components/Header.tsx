@@ -7,13 +7,9 @@ import {
   navBarLinkSpanish,
   NAV_HREF,
 } from "../data/header";
+import { Languages } from "../data/experience";
+import { openResume } from "../data/resume";
 import ThemeToggle from "./ThemeToggle";
-
-enum Languages {
-  English = "English",
-  French = "French",
-  Spanish = "Spanish",
-}
 
 function pickNav(language: string): string[] {
   if (language === "French") return navBarLinkFrench;
@@ -31,16 +27,8 @@ function Header({ language, setLanguage }: LanguageProps): JSX.Element {
   const visibleHrefs = NAV_HREF.filter((h) => h !== "download");
 
   const handleSelectLanguage = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    if (setLanguage) setLanguage(event.target.value as Languages);
+    if (setLanguage) setLanguage(event.target.value);
   };
-
-  function handleDownload() {
-    const pdfUrl =
-      language === "French"
-        ? "/Lim_Anthony_40281180_CV_Francais.pdf"
-        : "/Lim_Anthony_40281180_CV.pdf";
-    window.open(pdfUrl, "_blank", "noopener,noreferrer");
-  }
 
   useEffect(() => {
     const onScroll = () => {
@@ -60,7 +48,7 @@ function Header({ language, setLanguage }: LanguageProps): JSX.Element {
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
         if (visible?.target?.id) setActive(visible.target.id);
       },
-      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
+      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
     );
     visibleHrefs.forEach((id) => {
       const el = document.getElementById(id);
@@ -79,69 +67,81 @@ function Header({ language, setLanguage }: LanguageProps): JSX.Element {
 
   const headerClass = `${styles.header} ${hidden && !open ? styles.headerHidden : ""}`;
 
+  const languagePicker = (
+    <span className={styles.langWrap}>
+      <select
+        className={styles.langSelect}
+        aria-label="Language"
+        value={language}
+        onChange={handleSelectLanguage}
+      >
+        {Object.values(Languages).map((lang) =>
+          lang === "Spanish" ? null : (
+            <option key={lang} value={lang}>
+              {lang === "English" ? "EN" : "FR"}
+            </option>
+          ),
+        )}
+      </select>
+      <span className={styles.langCaret} aria-hidden="true">
+        ▾
+      </span>
+    </span>
+  );
+
   return (
     <>
       <header className={headerClass}>
-        <a href="#about" className={styles.logo} onClick={() => setOpen(false)}>
-          <span className={styles.logoMark}>AL</span>
-          Anthony Lim
-        </a>
+        <div className={styles.inner}>
+          <a href="#about" className={styles.logo} onClick={() => setOpen(false)}>
+            <span className={styles.logoMark}>AL</span>
+            <span className={styles.logoName}>Anthony Lim</span>
+          </a>
 
-        <nav className={styles.desktopNav} aria-label="Primary">
-          <ul className={styles.navList}>
-            {navItems.map((label, i) => {
-              const href = NAV_HREF[i];
-              if (href === "download") return null;
-              const isActive = active === href;
-              return (
-                <li key={href}>
-                  <a
-                    href={`#${href}`}
-                    className={`${styles.navItem} ${isActive ? styles.navItemActive : ""}`}
-                  >
-                    {label}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
+          <nav className={styles.desktopNav} aria-label="Primary">
+            <ul className={styles.navList}>
+              {navItems.map((label, i) => {
+                const href = NAV_HREF[i];
+                if (href === "download") return null;
+                const isActive = active === href;
+                return (
+                  <li key={href}>
+                    <a
+                      href={`#${href}`}
+                      className={`${styles.navItem} ${isActive ? styles.navItemActive : ""}`}
+                    >
+                      {label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
 
-          <div className={styles.controls}>
-            <ThemeToggle className={styles.iconBtn} />
-            <span className={styles.langWrap}>
-              <select
-                className={styles.langSelect}
-                aria-label="Language"
-                value={language}
-                onChange={handleSelectLanguage}
+            <div className={styles.controls}>
+              <ThemeToggle className={styles.iconBtn} />
+              {languagePicker}
+              <button
+                type="button"
+                className={styles.cv}
+                onClick={() => openResume(language)}
               >
-                {Object.values(Languages).map((lang) =>
-                  lang === "Spanish" ? null : (
-                    <option key={lang} value={lang}>
-                      {lang === "English" ? "EN" : "FR"}
-                    </option>
-                  )
-                )}
-              </select>
-              <span className={styles.langCaret} aria-hidden="true">▾</span>
-            </span>
-            <button type="button" className={styles.cv} onClick={handleDownload}>
-              {navItems[NAV_HREF.indexOf("download")]} ↗
-            </button>
-          </div>
-        </nav>
+                {navItems[NAV_HREF.indexOf("download")]}
+              </button>
+            </div>
+          </nav>
 
-        <button
-          type="button"
-          className={`${styles.menuBtn} ${open ? styles.menuOpen : ""}`}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span className={styles.menuBars}>
-            <span />
-          </span>
-        </button>
+          <button
+            type="button"
+            className={`${styles.menuBtn} ${open ? styles.menuOpen : ""}`}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span className={styles.menuBars}>
+              <span />
+            </span>
+          </button>
+        </div>
       </header>
 
       <div
@@ -157,7 +157,7 @@ function Header({ language, setLanguage }: LanguageProps): JSX.Element {
                 type="button"
                 className={styles.mobileNavItem}
                 onClick={() => {
-                  handleDownload();
+                  openResume(language);
                   setOpen(false);
                 }}
               >
@@ -174,31 +174,13 @@ function Header({ language, setLanguage }: LanguageProps): JSX.Element {
               onClick={() => setOpen(false)}
             >
               <span>{label}</span>
-              <span className={styles.mobileNavIndex}>
-                {String(i).padStart(2, "0")}
-              </span>
+              <span className={styles.mobileNavIndex}>{String(i).padStart(2, "0")}</span>
             </a>
           );
         })}
         <div className={styles.mobileFoot}>
           <ThemeToggle className={styles.iconBtn} />
-          <span className={styles.langWrap}>
-            <select
-              className={styles.langSelect}
-              aria-label="Language"
-              value={language}
-              onChange={handleSelectLanguage}
-            >
-              {Object.values(Languages).map((lang) =>
-                lang === "Spanish" ? null : (
-                  <option key={lang} value={lang}>
-                    {lang === "English" ? "EN" : "FR"}
-                  </option>
-                )
-              )}
-            </select>
-            <span className={styles.langCaret} aria-hidden="true">▾</span>
-          </span>
+          {languagePicker}
         </div>
       </div>
     </>

@@ -24,7 +24,7 @@ export const PROJECTS: Project[] = [
     link: "https://github.com/antholim",
   },
   {
-    title: "AquaScan — AI Fishing Assistant",
+    title: "AquaScan: AI Fishing Assistant",
     description:
       "React Native mobile app promoting sustainable fishing by identifying fish species via image recognition and verifying provincial regulations scraped from government sources.",
     description_fr:
@@ -32,23 +32,23 @@ export const PROJECTS: Project[] = [
     description_es:
       "Aplicación móvil React Native para pesca sostenible: identifica especies de peces por reconocimiento de imagen y verifica regulaciones provinciales.",
     stack: ["React Native", "AI / Image Recognition", "Web Scraping"],
-    award: "PolyHacks 2025 — Winner",
-    award_fr: "PolyHacks 2025 — Gagnant",
-    award_es: "PolyHacks 2025 — Ganador",
+    award: "PolyHacks 2025 Winner",
+    award_fr: "PolyHacks 2025 Gagnant",
+    award_es: "PolyHacks 2025 Ganador",
     link: "https://github.com/antholim",
   },
   {
     title: "AI Tools for Education",
     description:
-      "Suite of AI tools — PowerPoint hand-gesture control, secure CAPTCHA, and a gesture drawing tool — built with TensorFlow gesture recognition models for cybersecurity and education.",
+      "Suite of AI tools (PowerPoint hand-gesture control, secure CAPTCHA, and a gesture drawing tool) built with TensorFlow gesture recognition models for cybersecurity and education.",
     description_fr:
-      "Suite d'outils IA — contrôle de PowerPoint par gestes, CAPTCHA sécurisé et outil de dessin gestuel — basés sur des modèles de reconnaissance de gestes TensorFlow.",
+      "Suite d'outils IA (contrôle de PowerPoint par gestes, CAPTCHA sécurisé et outil de dessin gestuel) basés sur des modèles de reconnaissance de gestes TensorFlow.",
     description_es:
-      "Conjunto de herramientas con IA — control de PowerPoint por gestos, CAPTCHA seguro y herramienta de dibujo — usando modelos de reconocimiento de gestos en TensorFlow.",
+      "Conjunto de herramientas con IA (control de PowerPoint por gestos, CAPTCHA seguro y herramienta de dibujo) usando modelos de reconocimiento de gestos en TensorFlow.",
     stack: ["TensorFlow", "Pandas", "Python"],
-    award: "JACHacks 2024 — Best AI Project for Education",
-    award_fr: "JACHacks 2024 — Meilleur projet IA pour l'éducation",
-    award_es: "JACHacks 2024 — Mejor Proyecto de IA para Educación",
+    award: "JACHacks 2024 Best AI Project for Education",
+    award_fr: "JACHacks 2024 Meilleur projet IA pour l'éducation",
+    award_es: "JACHacks 2024 Mejor Proyecto de IA para Educación",
     link: "https://github.com/antholim",
   },
   {

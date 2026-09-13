@@ -1,6 +1,7 @@
 import styles from "../styles/AboutMe.module.css";
 import { LanguageProps } from "../types/props";
 import { ABOUT } from "../data/aboutme";
+import { openResume } from "../data/resume";
 
 type Lang = "English" | "French" | "Spanish";
 
@@ -9,62 +10,55 @@ function AboutMe({ language }: LanguageProps): JSX.Element {
     language === "French" ? "French" : language === "Spanish" ? "Spanish" : "English";
   const c = ABOUT[lang];
 
-  function handleDownload() {
-    const pdfUrl =
-      language === "French"
-        ? "/Lim_Anthony_40281180_CV_Francais.pdf"
-        : "/Lim_Anthony_40281180_CV.pdf";
-    window.open(pdfUrl, "_blank", "noopener,noreferrer");
-  }
-
   return (
     <section id="about" className={styles.hero}>
-      <div className={styles.copy}>
-        <span className={styles.eyebrow}>{c.eyebrow}</span>
-        <h1 className={styles.name}>Anthony<br />Lim</h1>
-        <p className={styles.role}>{c.role}</p>
-        <p className={styles.tagline}>{c.tagline}</p>
-        <p className={styles.description}>{c.description}</p>
-        <div className={styles.ctas}>
+      <div className={styles.inner}>
+        <div className={styles.avatar} style={{ "--i": 0 } as React.CSSProperties}>
+          <img src="/SemiProPic.PNG" alt="Anthony Lim" loading="eager" />
+        </div>
+
+        <span className={styles.badge} style={{ "--i": 1 } as React.CSSProperties}>
+          <span className={styles.badgeDot} aria-hidden="true" />
+          {c.nowLabel} · {c.now}
+        </span>
+
+        <h1 className={styles.title} style={{ "--i": 2 } as React.CSSProperties}>
+          Anthony Lim
+        </h1>
+
+        <p className={styles.tagline} style={{ "--i": 3 } as React.CSSProperties}>
+          {c.tagline}
+        </p>
+
+        <p className={styles.description} style={{ "--i": 4 } as React.CSSProperties}>
+          {c.description}
+        </p>
+
+        <div className={styles.ctas} style={{ "--i": 5 } as React.CSSProperties}>
           <a className={styles.ctaPrimary} href={`mailto:${c.ctaPrimary}`}>
-            {c.ctaContact} ↗
+            {c.ctaContact}
           </a>
-          <button type="button" className={styles.ctaOutline} onClick={handleDownload}>
-            {c.ctaResume} ↓
+          <button type="button" className={styles.ctaSecondary} onClick={() => openResume(language)}>
+            {c.ctaResume}
+            <span aria-hidden="true">↓</span>
           </button>
-          <a
-            className={styles.ctaGhost}
-            href="https://github.com/antholim"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub ↗
+        </div>
+
+        <div className={styles.social} style={{ "--i": 6 } as React.CSSProperties}>
+          <a href="https://github.com/antholim" target="_blank" rel="noopener noreferrer">
+            GitHub
           </a>
+          <span className={styles.socialDot} aria-hidden="true" />
           <a
-            className={styles.ctaGhost}
             href="https://www.linkedin.com/in/antho-lim/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            LinkedIn ↗
+            LinkedIn
           </a>
+          <span className={styles.socialDot} aria-hidden="true" />
+          <a href={`mailto:${c.ctaPrimary}`}>{c.ctaPrimary}</a>
         </div>
-      </div>
-
-      <div className={styles.portrait}>
-        <div className={styles.imgWrap}>
-          <img
-            src="/SemiProPic.PNG"
-            alt="Anthony Lim"
-            className={styles.img}
-            loading="eager"
-          />
-        </div>
-        <p className={styles.statusDot}>
-          {lang === "English" && "Open to opportunities"}
-          {lang === "French" && "Ouvert aux opportunités"}
-          {lang === "Spanish" && "Abierto a oportunidades"}
-        </p>
       </div>
     </section>
   );

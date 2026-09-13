@@ -1,254 +1,197 @@
 .hero {
-  min-height: 100dvh;
-  padding: calc(var(--header-h) + clamp(3rem, 8vw, 6rem)) clamp(1.25rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: center;
-  max-width: var(--content-max);
-  margin: 0 auto;
   width: 100%;
-  position: relative;
+  background:
+    radial-gradient(60rem 30rem at 50% -8rem, var(--accent-soft), transparent 70%),
+    var(--bg);
+  padding-block: calc(var(--header-h) + var(--space-7)) var(--space-8);
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: clamp(1.25rem, 5vw, 4rem);
-  right: clamp(1.25rem, 5vw, 4rem);
-  height: 1px;
-  background: var(--line);
-}
-
-.copy {
+.inner {
+  width: min(100% - 2 * var(--gutter), var(--content-narrow));
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  max-width: 52rem;
-}
-
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  text-align: center;
+  gap: var(--space-4);
 }
 
-.eyebrow::before {
-  content: "";
-  display: inline-block;
-  width: 32px;
-  height: 1px;
-  background: var(--accent);
+/* Every hero element rises on load, staggered by --i. */
+.inner > * {
+  animation: rise 0.85s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 80ms);
 }
 
-.name {
-  font-family: var(--font-display);
-  font-size: var(--step-6);
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  line-height: 0.96;
-  color: var(--text);
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-.role {
-  font-family: var(--font-mono);
-  font-size: var(--step-0);
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
-}
-
-.tagline {
-  font-family: var(--font-display);
-  font-size: var(--step-2);
-  font-weight: 400;
-  line-height: 1.2;
-  color: var(--text);
-  max-width: 36rem;
-}
-
-.tagline em {
-  font-style: italic;
-  color: var(--accent);
-}
-
-.description {
-  font-family: var(--font-mono);
-  font-size: var(--step-0);
-  line-height: 1.75;
-  color: var(--text-muted);
-  max-width: 42rem;
-}
-
-.ctas {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
-}
-
-.ctaPrimary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--accent);
-  color: var(--accent-contrast);
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
-  letter-spacing: 0.04em;
-  padding: 0.7rem 1.3rem;
-  border-radius: 999px;
-  border: 1px solid var(--accent);
-  transition: all 0.22s var(--ease-out);
-}
-
-.ctaPrimary:hover {
-  background: transparent;
-  color: var(--accent);
-}
-
-.ctaOutline {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: transparent;
-  color: var(--text);
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
-  letter-spacing: 0.04em;
-  padding: 0.7rem 1.3rem;
-  border-radius: 999px;
-  border: 1px solid var(--line-strong);
-  transition: all 0.22s var(--ease-out);
-}
-
-.ctaOutline:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-.ctaGhost {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: transparent;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
-  letter-spacing: 0.04em;
-  padding: 0.7rem 1rem;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  transition: all 0.22s var(--ease-out);
-}
-
-.ctaGhost:hover {
-  color: var(--text);
-  border-color: var(--line);
-}
-
-.portrait {
-  position: relative;
-  width: clamp(160px, 22vw, 320px);
-  flex-shrink: 0;
-  align-self: start;
-  margin-top: 2rem;
-}
-
-.imgWrap {
-  position: relative;
-  width: 100%;
-  border-radius: var(--radius-lg);
+.avatar {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
   overflow: hidden;
-  box-shadow: var(--shadow-2);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
 }
 
-.imgWrap::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    160deg,
-    color-mix(in oklab, var(--accent) 25%, transparent) 0%,
-    transparent 55%
-  );
-  mix-blend-mode: multiply;
-  pointer-events: none;
-}
-
-.img {
-  display: block;
+/* The source is near-square and framed head-to-waist, so `cover` alone leaves the
+   face tiny and high in the circle. Translate the face to the centre first, then
+   scale about that centre. */
+.avatar img {
   width: 100%;
-  height: auto;
-  aspect-ratio: 3/4;
+  height: 100%;
   object-fit: cover;
-  object-position: top center;
-  filter: grayscale(20%);
-  transition: filter 0.4s var(--ease-out);
+  transform: scale(2.7) translate(3.8%, 34.5%);
 }
 
-.imgWrap:hover .img {
-  filter: grayscale(0%);
-}
-
-.statusDot {
+.badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  font-family: var(--font-mono);
+  gap: 0.5em;
   font-size: var(--step--1);
+  font-weight: 600;
   color: var(--text-muted);
-  margin-top: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 0.4em 0.95em;
+  box-shadow: var(--shadow-sm);
 }
 
-.statusDot::before {
-  content: "";
-  display: inline-block;
+.badgeDot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
-  animation: pulse 2.4s ease infinite;
+  background: #30d158;
+  flex: none;
+  box-shadow: 0 0 0 3px rgba(48, 209, 88, 0.18);
 }
 
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25); }
-  50%       { box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.08); }
+.title {
+  font-size: var(--step-6);
+  letter-spacing: -0.045em;
+  margin-top: var(--space-1);
 }
 
-@media (max-width: 680px) {
+.tagline {
+  font-size: var(--step-3);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  max-width: 24ch;
+  text-wrap: balance;
+}
+
+.description {
+  font-size: var(--step-1);
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 58ch;
+}
+
+/* ── Buttons: full pills, the Big-Tech default ───────────── */
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  font-size: var(--step-0);
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  padding: 0.78em 1.6em;
+  transition:
+    background-color 0.22s var(--ease-out),
+    border-color 0.22s var(--ease-out),
+    color 0.22s var(--ease-out),
+    transform 0.22s var(--ease-out);
+}
+
+.ctaPrimary {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.ctaPrimary:hover {
+  background: var(--accent-hover);
+  color: var(--accent-contrast);
+  transform: scale(1.02);
+}
+
+.ctaSecondary {
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  background: var(--surface);
+}
+
+.ctaSecondary:hover {
+  border-color: var(--text);
+  transform: scale(1.02);
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--step--1);
+  font-weight: 500;
+  margin-top: var(--space-2);
+}
+
+.social a {
+  color: var(--text-muted);
+}
+
+.social a:hover {
+  color: var(--accent);
+}
+
+.socialDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+
+@media (max-width: 640px) {
   .hero {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
+    padding-block: calc(var(--header-h) + var(--space-5)) var(--space-7);
   }
-
-  .portrait {
-    width: clamp(120px, 40vw, 200px);
-    align-self: auto;
-    margin: 0 auto;
-    order: -1;
+  .avatar {
+    width: 92px;
+    height: 92px;
   }
-
-  .name {
-    text-align: center;
-  }
-
-  .eyebrow, .role, .tagline, .description {
-    text-align: center;
-  }
-
-  .eyebrow {
-    justify-content: center;
-  }
-
   .ctas {
+    width: 100%;
+    flex-direction: column;
+  }
+  .ctaPrimary,
+  .ctaSecondary {
     justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inner > * {
+    animation: none;
   }
 }
